@@ -1,166 +1,349 @@
 *{
-   padding: 0;
-   margin: 0;
-   text-decoration: none;
-   list-style: none;
-   box-sizing: border-box;
-}
-.bodyhome{
-    font-family:'Times New Roman', Times, serif;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+ }
+ .bodyhome{
+     font-family:'Times New Roman', Times, serif;
+ }
+ 
+ nav{
+     background:  #000000;
+     height: 80px;
+     width: 100%;
+ }
+ nav .logo{
+     color: white;
+     font-size: 50px;
+     line-height: 80px;
+     padding:  25px;
+     font-weight: bold;
+     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ nav .centro{
+     float:right;
+     margin-right: 380px;
+ }
+ 
+ nav .destra{
+     float:right;
+     margin-right: 50px;
+     margin-top: 8px;
+ }
+ nav ul li{
+     display: inline-block;
+     line-height: 80px;
+     margin: 0 5px;
+ }
+ nav ul li a{
+     color: white;
+     font-size: 15px;
+     padding: 7px 13px;
+     border-radius: 3px;
+     text-transform: uppercase;
+     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-weight: bold;
+ }
+
+ nav ul li a:hover,
+nav ul li a.active{
+  background: #ff7a1b;
+  transition: .5s;
+  background-position-x:right;
 }
 
-nav{
+
+ /*a.active, a:hover{
+     background: #ff7a1b;
+     transition: .5s;
+ }*/
+
+ nav ul ul{
+    position: absolute;
+    top: 85px;
+    border: 3px solid #000000;
+    background: white;
+    opacity: 0;
+    visibility: hidden;
+  }
+  nav ul li:hover > ul{
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+    transition: .3s linear;
+  }
+  nav ul ul li{
+    width: 90px;
+    height: 65px;
+    display:list-item;
+    position: relative;
+    border: 1px solid #ffffff;
+    border-top: 1px solid #ffffff;
+  }
+  nav ul ul li a{
+    line-height: 50px;
+    color:#000000
+  }
+  nav ul ul ul{
+    border-top: none;
+  }
+  nav ul ul ul li{
+    position: relative;
+    top: -70px;
+    left: 150px;
+  }
+  nav ul ul li a i{
+    margin-left: 45px;
+  }
+  section{
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  }
+ 
+  /*
+ .dropdwn{
+     margin: 0 auto;
+     background:  #000000;
+     height: 80px;
+     width: 100%;
+ }
+
+ .toolbar{
     background:  #000000;
     height: 80px;
     width: 100%;
-}
-label.logo{
-    color: white;
-    font-size: 50px;
-    line-height: 80px;
-    padding:  25px;
-    font-weight: bold;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.centre{
-    float:right;
-    margin-right: 380px;
+ }
+
+
+ .logo{
+     color: white;
+     font-size: 50px;
+     line-height: 80px;
+     padding:  25px;
+     font-weight: bold;
+     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+
+ .ulright{
+     padding: 0;
+     margin: 0;
+     float: right;
+     margin-right: 45px;
+     margin-top: 22px;
+ }
+ 
+ .liright{
+     position: relative;
+     list-style: none;
+     display: inline-block;
+     line-height: 80px;
+ }
+
+ .aright{
+     display: block;
+     text-decoration: none;
+     line-height: 30px;
+     padding: 7px 15px;
+     border-radius: 3px;
+ }
+
+ .ulcenter{
+    padding: 0;
+    margin: 0;
+    float: right;
+    margin-right: 430px;
+    margin-top: 6px;
 }
 
-.right{
-    float:right;
-    margin-right: 50px;
-    margin-top: 8px;
-}
-nav ul li{
+.licenter{
+    position: relative;
+    list-style: none;
     display: inline-block;
     line-height: 80px;
-    margin: 0 5px;
 }
-nav ul li a{
+
+.acenter{
+    display: block;
+    line-height: 60px;
+    padding: 7px 13px;
+    border-radius: 3px;
     color: white;
     font-size: 15px;
-    padding: 7px 13px;
     border-radius: 3px;
     text-transform: uppercase;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bold;
 }
-a.active, a:hover{
-    background: #ff7a1b;
-    transition: .5s;
-}
 
-
-
-
-
-.bodylogin{
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(120deg,#2980b9, #8e44ad);
-    height: 100vh;
-    overflow: hidden;
-    background-image: url(icons/loginimg.png);
-}
-
-.centrelogin{
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 400px;
-    height: 400px;
-    background: white;
-    border-bottom: 3px solid;
-    border-top: 3px solid;
-    border-right: 3px solid;
-    border-left: 3px solid;
-    border-radius: 15px;
-    border-color:#000000;
-    font-size: 12px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
-}
-
-.centrelogin h1{
-    text-align: center;
-    padding: 20px 0;
-    border-bottom: 3px solid #000000;
-}
-
-.centrelogin form{
-    padding: 0 40px;
-    box-sizing: border-box;
-}
-
-form .txt_field{
-    position: relative;
-    border-bottom: 2px solid #ff7a1b;
-    margin : 30px 0;
-}
-
-.txt_field input{
-    width: 100%;
-    padding: 0 5px;
-    height: 40px;
-    font-size: 16px;
-    border: none;
-    background: none;
-    outline: none;
-}
-
-.txt_field label{
+.ultend{
     position: absolute;
-    top: 50%;
-    left: 5px;
-    color: #adadad;
-    transform: translateY(-50%);
-    font-size: 16px;
-    pointer-events: none;
-    transition: .5s;
+    top: 60px;
+    display: none;
 }
 
-.txt_field span::before{
-    content: '';
-    position: absolute;
-    top: 40px;
-    left: 0;
-    width: 0%;
-    height: 2px;
-    background: #ff7a1b;   
-    transition: .5s;
-}
-
-
-.txt_field input:focus ~ label,
-.txt_field input:valid ~ label{
-    top: -5px;
-    color:#ff7a1b;
-}
-
-.txt_field input:focus ~ span::before,
-.txt_field input:valid ~ span::before{
-    width: 100%;
-}
-
-input[type="submit"]{
-    width: 100%;
-    height: 50px;
-    border: 3px solid;
+.acenter.active, .acenter:hover{
     background: #ff7a1b;
-    border-radius: 25px; 
-    font-size: 18px;
-    color: #000000;
-    font-weight: 650;
-    cursor: pointer;
-    outline: none;
 }
 
-input[type="submit"]:hover{
-    border-color: #000000;
-    transition: .5s;
+.aright.active, .aright:hover{
+    background: #ff7a1b;
 }
+ /*
+ .right1{
+     float:right;
+     margin-right: 110px;
+     margin-top: 8px;
+ }
+
+ .navbar.right2{
+    float:right;
+    margin-right: 80px;
+    margin-top: 8px;
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px; 
+}
+
+.right3{
+    float:right;
+    margin-right: 50px;
+    margin-top: 8px;
+}
+
+
+ nav ul li{
+     display: inline-block;
+     line-height: 80px;
+     margin: 0 5px;
+ }
+ nav ul li a{
+     color: white;
+     font-size: 15px;
+     padding: 7px 13px;
+     border-radius: 3px;
+     text-transform: uppercase;
+     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     font-weight: bold;
+ }
+
+
+ a.active, a:hover{
+     background: #ff7a1b;
+     transition: .5s;
+     position: relative;
+ }
+ */
+ 
+
+ /*login.html */
+ 
+ 
+ .bodylogin{
+     background-image: url(icons/loginimg.png);
+     overflow: hidden;
+     user-select: none;
+ }
+ 
+ .centrelogin{
+     position:absolute;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     width: 400px;
+     height: 400px;
+     background: white;
+     border-bottom: 3px solid;
+     border-top: 3px solid;
+     border-right: 3px solid;
+     border-left: 3px solid;
+     border-radius: 15px;
+     border-color:#000000;
+     font-size: 12px;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+     box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+ }
+ 
+ .centrelogin h1{
+     text-align: center;
+     padding: 20px 0;
+     border-bottom: 3px solid #000000;
+ }
+ 
+ .centrelogin form{
+     padding: 0 40px;
+     box-sizing: border-box;
+ }
+ 
+ form .txt_field{
+     position: relative;
+     border-bottom: 2px solid #ff7a1b;
+     margin : 30px 0;
+ }
+ 
+ .txt_field input{
+     width: 100%;
+     padding: 0 5px;
+     height: 40px;
+     font-size: 16px;
+     border: none;
+     background: none;
+     outline: none;
+ }
+ 
+ .txt_field label{
+     position: absolute;
+     top: 50%;
+     left: 5px;
+     color: #adadad;
+     transform: translateY(-50%);
+     font-size: 16px;
+     pointer-events: none;
+     transition: .5s;
+ }
+ 
+ .txt_field span::before{
+     content: '';
+     position: absolute;
+     top: 40px;
+     left: 0;
+     width: 0%;
+     height: 2px;
+     background: #ff7a1b;   
+     transition: .5s;
+ }
+ 
+ 
+ .txt_field input:focus ~ label,
+ .txt_field input:valid ~ label{
+     top: -5px;
+     color:#ff7a1b;
+ }
+ 
+ .txt_field input:focus ~ span::before,
+ .txt_field input:valid ~ span::before{
+     width: 100%;
+ }
+ 
+ input[type="submit"]{
+     width: 100%;
+     height: 50px;
+     border: 3px solid;
+     background: #ff7a1b;
+     border-radius: 25px; 
+     font-size: 18px;
+     color: #000000;
+     font-weight: 650;
+     cursor: pointer;
+     outline: none;
+ }
+ 
+ input[type="submit"]:hover{
+     border-color: #000000;
+     transition: .5s;
+ }
 
 
 
