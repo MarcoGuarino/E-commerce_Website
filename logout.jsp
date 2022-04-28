@@ -2,34 +2,21 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<head>
+    <style>
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/carousel.css" rel="stylesheet">
 
-        <title>Login</title>
+    <title>Sneaka</title>
+</head>
 
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-            }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-        </style>
-
-        <link href="bootstrap/css/login.css" rel="stylesheet">
-    </head>
-
+<body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
         <div class="container-fluid">
@@ -72,15 +59,23 @@
                 -->
                     <li class="nav-item">
                         <a class="nav-link" style="margin-top:10px;">
-                        <%Object value = session.getAttribute("msg");
+                        <%Object value = session.getAttribute("msg");                            
                         if (value != null){%>
-                        <i><%=value%></i>
+                           <i><%=value%></i>
                         <%}%>
                         </a>
                     </li>
-
+                           
+                    <%
+                    String dest;
+                    if (value == null)
+                        dest = "login.jsp";
+                    else{
+                        dest = "logout.jsp";
+                        }
+                    %>
                     <li class="nav-item">
-                        <a class="nav-link active" href="login.jsp"><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                    <a class="nav-link active" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
                     user = true;
@@ -101,31 +96,18 @@
         </div>
     </nav>
 </header>
-
+  
     <body class="text-center" style="background-image: url('img/login.png')">
-
-        <main class="form-signin bg-white" style="border-radius:20px; height:300px">
-            <form action="LoginServlet" method="post">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-                <div class="form-floating" style="margin-top:30px">
-                    <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-
-                <!--<div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" style="color:white; margin-top:70px" value="remember-me"> Remember me
-                    </label>
-                </div> -->
-                <!--<button class="w-10 btn btn-lg btn-primary" style="color:white" type="submit">Sign in</button> -->
-                <button class="w-10 btn btn-lg btn-secondary" style="color:white" type="submit">Sign up</button>
-            </form>
-        </main>
+    <main>
+    <div class="col d-flex justify-content-center" style="margin-top:250px; widht:50px">
+        <div class="card w-20 h-40">
+           <div class="card-body">
+           <h5 class="card-title">username: role</h5>
+           <p class="card-text">Sei admin</p>
+           <a href="#" class="btn btn-danger">effettua il logout</a>
+           </div>
+        </div>
+    </div>
+    </main> 
     </body>
 </html>
-

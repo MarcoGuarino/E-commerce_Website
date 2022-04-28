@@ -14,7 +14,7 @@
 
 <body style="padding-top:65px;">
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3  navbar-static-top navbar-default">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1 fs-1" style="font-weight:bold">SNEAKA</span>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +26,7 @@
                         <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="offerte.jsp">Offerte</a>
+                        <a class="nav-link" href="offerte.jsp">Offerte</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -53,19 +53,25 @@
                         </form>
                     </li>
                 -->
-                    <% boolean flag;
-                    flag = true;
-                    if (flag == true) {%>
-                        <li class="nav-item">
-                            <a class="nav-link" style="margin-top:10px;">
-                            <%Object value = session.getAttribute("msg");%>
-                            <i><%=value%></i>
-                            </a>
-                        </li>
-                    <%}%>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="login.jsp"><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                        <a class="nav-link" style="margin-top:10px;">
+                        <%Object value = session.getAttribute("msg");                            
+                        if (value != null){%>
+                           <i><%=value%></i>
+                        <%}%>
+                        </a>
+                    </li>
+                           
+                    <%
+                    String dest;
+                    if (value == null)
+                        dest = "login.jsp";
+                    else{
+                        dest = "logout.jsp";
+                        }
+                    %>
+                    <li class="nav-item">
+                    <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
                     user = true;

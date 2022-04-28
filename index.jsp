@@ -57,24 +57,25 @@
                         </form>
                     </li>
                 -->
-                    <% boolean flag;
-                    flag = true;
-                    if (flag == true) {%>
-                        <li class="nav-item">
-                            <a class="nav-link" style="margin-top:10px;">
-                            <%Object value = session.getAttribute("msg");
-                            if (value == null){%>
-                            <i></i>
-                            <%}%>
-                            <%else{%>
-                            <i><%=value%></i>                           
-                            <%}%>
-                            </a>
-                        </li>
-                    <%}%>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="login.jsp"><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                        <a class="nav-link" style="margin-top:10px;">
+                        <%Object value = session.getAttribute("msg");                            
+                        if (value != null){%>
+                           <i><%=value%></i>
+                        <%}%>
+                        </a>
+                    </li>
+                           
+                    <%
+                    String dest;
+                    if (value == null)
+                        dest = "login.jsp";
+                    else{
+                        dest = "logout.jsp";
+                        }
+                    %>
+                    <li class="nav-item">
+                    <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
                     user = true;
