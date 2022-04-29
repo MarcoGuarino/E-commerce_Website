@@ -45,7 +45,7 @@
                         </ul>
                     </li>
                    <li class="nav-item">
-                        <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
+                        <a class="nav-link active" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
 
@@ -75,7 +75,7 @@
                         }
                     %>
                     <li class="nav-item">
-                    <a class="nav-link active" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                    <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
                     user = true;
@@ -96,18 +96,20 @@
         </div>
     </nav>
 </header>
-  
-    <body class="text-center" style="background-image: url('img/login.png')">
-    <main>
-    <div class="col d-flex justify-content-center" style="margin-top:250px; widht:50px">
-        <div class="card w-20 h-40">
-           <div class="card-body">
-           <h5 class="card-title">username: role</h5>
-           <p class="card-text">Sei admin</p>
-           <a href="LogoutServlet" class="btn btn-danger">effettua il logout</a>
-           </div>
+
+    <!-- una scarpa può essere filtrata per: marca, uomo/donna/bambino, colore, -->
+    <div class="container-fluid">
+    <form action="/action_page.php">
+       <div class="card col d-flex justify-content-center" style="width: 18rem;">
+          <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
         </div>
+   </form> 
+   </div>
+
     </div>
-    </main> 
-    </body>
+</body>
 </html>

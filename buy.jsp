@@ -41,7 +41,7 @@
                         </ul>
                     </li>
                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+                        <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
 
@@ -168,7 +168,7 @@
 <div class="container">
    <br/>
    <div class="row mt-5">
-   	 <h2>Similar Products</h2>
+   	 <h2>Prodotti simili</h2>
    </div>
    
    <div class="row mt-2">

@@ -58,7 +58,7 @@
                         </ul>
                     </li>
                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+                        <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
 

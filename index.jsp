@@ -45,7 +45,7 @@
                         </ul>
                     </li>
                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-search"></i></a>
+                        <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
 
@@ -153,8 +153,8 @@
                      xmlns="http://www.w3.org/2000/svg">
                     <image href="img/b.webp" height="200" width="200"></image>
                 </svg>
-                <h2>Trend anni '90 da uomo</h2>
-                <p>Stile in primo piano</p>
+                <h2>La scarpa che fa per te</h2>
+                <p>In base ai tuoi acquisti</p>
                 <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
             </div>
             <div class="col-lg-4">
@@ -162,8 +162,8 @@
                      xmlns="http://www.w3.org/2000/svg">
                     <image href="img/b.webp" height="200" width="200"></image>
                 </svg>
-                <h2>Look primaverili allegri da donna</h2>
-                <p>Tira su il morale con colori accesi</p>
+                <h2>La scarpa piu acquistata</h2>
+                <p>Per chi vuole essere sempre alla moda</p>
                 <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
             </div>
             <div class="col-lg-4">
@@ -172,8 +172,8 @@
                     <image href="img/b.webp" height="200" width="200"></image>
                 </svg>
 
-                <h2>Look primaverili allegri per bambini</h2>
-                <p>Per giocare al parco con stile</p>
+                <h2>La scarpa del giorno</h2>
+                <p>Per chi vuole provare qualcosa di nuovo</p>
                 <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
             </div>
         </div>
