@@ -2,34 +2,22 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<head>
+    <style>
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="stili_carrello.css">
 
-        <title>Login</title>
+    <title>Sneaka</title>
+</head>
 
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-            }
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-        </style>
-
-        <link href="bootstrap/css/login.css" rel="stylesheet">
-    </head>
-
+<body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
         <div class="container-fluid">
@@ -72,21 +60,29 @@
                 -->
                     <li class="nav-item">
                         <a class="nav-link" style="margin-top:10px;">
-                        <%Object value = session.getAttribute("msg");
+                        <%Object value = session.getAttribute("msg");                            
                         if (value != null){%>
-                        <i><%=value%></i>
+                           <i><%=value%></i>
                         <%}%>
                         </a>
                     </li>
-
+                           
+                    <%
+                    String dest;
+                    if (value == null)
+                        dest = "login.jsp";
+                    else{
+                        dest = "logout.jsp";
+                        }
+                    %>
                     <li class="nav-item">
-                        <a class="nav-link active" href="login.jsp"><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                    <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
                     user = true;
                     if (user == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                       <a class="nav-link active" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% boolean admin;
@@ -102,30 +98,39 @@
     </nav>
 </header>
 
-    <body class="text-center" style="background-image: url('img/login.png')">
+<main>
+<div class="container-fluid" style="margin-top:90px">
+  <div class="row">
+    <div class="col-12 col-sm-8 col-lg-12">
+        <section class="py-7container">
+        <div style="background-color:black; color:white">
+            <div class="mx-auto">
+                <h4 class="fw-light" style="margin-top:0px">Sei un utente premium, la spedizione è gratuita</h4>
+            </div>
+        </div>
+        </section>
+      <h1 class="fw-bold">Il tuo carrello</h1> 
+      <ul class="list-group">
+      <% for(int i = 0; i < 10; i+=1) { %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Don Quixote &nbsp;&nbsp;&nbsp;&nbsp;
+          Size: 42 &nbsp;&nbsp;&nbsp;&nbsp;
+          30€
+          <button type="button" class="btn btn-danger">Rimuovi</button>
+          <button type="button" class="btn btn-success">Acquista</button>
+          <div class="image-parent">
+              <img src="img/b.webp" class="img-fluid" alt="quixote">
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    <br>
+    <button type="button" class="btn btn-danger">Rimuovi tutto</button>
+    <button type="button" class="btn btn-success">Acquista tutto</button>
+    </div>
+  </div>
+</div>
+</main>
 
-        <main class="form-signin bg-white" style="border-radius:20px; height:300px">
-            <form action="LoginServlet" method="post">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-                <div class="form-floating" style="margin-top:30px">
-                    <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username">
-                    <label for="floatingInput">Username</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
-
-                <!--<div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" style="color:white; margin-top:70px" value="remember-me"> Remember me
-                    </label>
-                </div> -->
-                <button class="w-10 btn btn-lg btn-primary" style="color:white" type="submit">Sign in</button>
-                <button class="w-10 btn btn-lg btn-secondary" style="color:white" type="submit">Sign up</button>
-            </form>
-        </main>
-    </body>
+</body>
 </html>
-

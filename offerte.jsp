@@ -77,7 +77,7 @@
                     user = true;
                     if (user == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="#"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                       <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% boolean admin;

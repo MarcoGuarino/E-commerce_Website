@@ -81,7 +81,7 @@
                     user = true;
                     if (user == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="#"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                       <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% boolean admin;
@@ -102,9 +102,9 @@
     <section class="py-1 text-center container-fluid">
         <div class="row py-lg-1">
             <div class="col-lg-7 col-md-8 mx-auto">
-<form class="row g-3" style="margin-top:65px">
+<form class="row row-cols-5" style="margin-top:65px">
 
-  <div class="col-md-4">
+  <div class="col-md-2">
     <label for="inputState" class="form-label">Marca</label>
     <select id="inputState" class="form-select" name="marca">
       <option selected>Choose...</option>
@@ -112,7 +112,7 @@
     </select>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-2">
     <label for="inputState" class="form-label">Uomo/Donna/Bambino</label>
     <select id="inputState" class="form-select" name="uomo/donna/bambino">
       <option selected>Choose...</option>
@@ -120,7 +120,7 @@
     </select>
   </div>
 
-  <div class="col-md-4">
+  <div class="col-md-2">
     <label for="inputState" class="form-label">Colore</label>
     <select id="inputState" class="form-select" name="colore">
       <option selected>Choose...</option>
@@ -128,20 +128,51 @@
     </select>
   </div>
 
-  <div class="col-md-4">
-    <label for="inputState" class="form-label">Prezzo</label>
-    <select id="inputState" class="form-select" name="prezzo">
-      <option selected>Choose...</option>
-      <option>...</option>
-    </select>
+  <div class="col-md-3">
+    <label for="customRange2" class="form-label">Prezzo Minimo</label>
+    <input type="range" class="form-range" min="0" max="100" value="24" id="customRange2" oninput="this.nextElementSibling.value = this.value">
+    <output>24</output>
+
+  </div>
+
+  <div class="col-md-3">
+    <label for="customRange2" class="form-label">Prezzo Massimo</label>
+    <input type="range" class="form-range" min="0" max="100" value="24" id="customRange2" oninput="this.nextElementSibling.value = this.value">
+    <output>24</output>
+
   </div>
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <button type="submit" class="btn btn-success" style="margin-top: 40px;">Ricerca</button>
   </div>
 </form>
             </div>
         </div>
     </section>
+
+<!-- filtri -->
+
+
+    <div class="album py-4 bg-light">
+        <div class="container">
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <% for(int i = 0; i < 10; i+=1) { %>
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <a href="buy.jsp"><image href="img/b.webp" height="200" width="200"></image></a>
+                        </svg>
+                        <div class="card-body">
+                            <p class="card-price">modello</p>
+                            <p class="card-price"><del>30€</del>&nbsp;&nbsp;&nbsp;&nbsp;20€</p>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
 
     </main>
 
