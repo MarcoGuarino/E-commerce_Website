@@ -122,7 +122,7 @@
                         <input type="checkbox" style="color:white; margin-top:70px" value="remember-me"> Remember me
                     </label>
                 </div> -->
-                <!--<button class="w-10 btn btn-lg btn-primary" style="color:white" type="submit">Sign in</button> -->
+                <button class="w-10 btn btn-lg btn-primary" style="color:white" type="submit">Sign in</button>
                 <button class="w-10 btn btn-lg btn-secondary" style="color:white" type="submit">Sign up</button>
             </form>
         </main>

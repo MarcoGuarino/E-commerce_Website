@@ -97,19 +97,54 @@
     </nav>
 </header>
 
-    <!-- una scarpa può essere filtrata per: marca, uomo/donna/bambino, colore, -->
-    <div class="container-fluid">
-    <form action="/action_page.php">
-       <div class="card col d-flex justify-content-center" style="width: 18rem;">
-          <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-   </form> 
-   </div>
+    <!-- una scarpa può essere filtrata per: marca, uomo/donna/bambino, colore, prezzo -->
+    <main>
+    <section class="py-1 text-center container-fluid">
+        <div class="row py-lg-1">
+            <div class="col-lg-7 col-md-8 mx-auto">
+<form class="row g-3" style="margin-top:65px">
 
-    </div>
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">Marca</label>
+    <select id="inputState" class="form-select" name="marca">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">Uomo/Donna/Bambino</label>
+    <select id="inputState" class="form-select" name="uomo/donna/bambino">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">Colore</label>
+    <select id="inputState" class="form-select" name="colore">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+
+  <div class="col-md-4">
+    <label for="inputState" class="form-label">Prezzo</label>
+    <select id="inputState" class="form-select" name="prezzo">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+  </div>
+</form>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+
 </body>
 </html>
