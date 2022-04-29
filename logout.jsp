@@ -104,7 +104,7 @@
            <div class="card-body">
            <h5 class="card-title">username: role</h5>
            <p class="card-text">Sei admin</p>
-           <a href="#" class="btn btn-danger">effettua il logout</a>
+           <a href="LogoutServlet" class="btn btn-danger">effettua il logout</a>
            </div>
         </div>
     </div>

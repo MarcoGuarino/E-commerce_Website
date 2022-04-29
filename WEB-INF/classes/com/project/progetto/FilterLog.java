@@ -26,10 +26,10 @@ public class FilterLog implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        String username = request.getParameter("email");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if (Objects.equals(username, "test@test.com") && Objects.equals(password, "password")) {
+        if ((username.equals("test")) && (password.equals("password"))) {
             HttpSession session = req.getSession(true);
             chain.doFilter(request, response);
         } else {

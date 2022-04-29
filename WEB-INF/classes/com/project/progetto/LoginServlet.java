@@ -21,7 +21,7 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.FilterConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;;
+import jakarta.servlet.ServletResponse;
 
 public class LoginServlet extends HttpServlet {
 /*
@@ -40,17 +40,16 @@ public class LoginServlet extends HttpServlet {
 
 
 
-    String email=request.getParameter("email");
+    String username=request.getParameter("username");
 
     String msg=" ";
 
-    msg = "welcome, " + email;
+    msg = "welcome, " + username;
     HttpSession session = request.getSession();
     session.setAttribute("msg", msg);
     RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
     req.forward(request, response);
     response.setContentType("text/html");
-    PrintWriter out=response.getWriter();
 }
 
 }
