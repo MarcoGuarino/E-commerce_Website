@@ -2,33 +2,33 @@
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
-        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 
-        <title>Login</title>
+    <title>Login</title>
 
-        <style>
-            .bd-placeholder-img {
-                font-size: 1.125rem;
-                text-anchor: middle;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
             }
+        }
+    </style>
 
-            @media (min-width: 768px) {
-                .bd-placeholder-img-lg {
-                    font-size: 3.5rem;
-                }
-            }
-        </style>
-
-        <link href="bootstrap/css/login.css" rel="stylesheet">
-    </head>
+    <link href="bootstrap/css/login.css" rel="stylesheet">
+</head>
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
@@ -49,7 +49,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Marche
                         </a>
-                    
+
                         <ul class="dropdown-menu" style="color:orange"aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item dropdown-show" href="#">Nike</a></li>
                             <li><a class="dropdown-item" href="#">Adidas</a></li>
@@ -57,25 +57,25 @@
                             <li><a class="dropdown-item" href="#">New Balance</a></li>
                         </ul>
                     </li>
-                   <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav ml-auto">
-                <!--
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <!<button class="btn btn-outline-success" style="background-color:orange; color:white; border-color:white" type="submit">Search</button>
-                        </form>
-                    </li>
-                -->
+                    <!--
+                        <li class="nav-item">
+                            <form class="d-flex">
+                                <!<button class="btn btn-outline-success" style="background-color:orange; color:white; border-color:white" type="submit">Search</button>
+                            </form>
+                        </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" style="margin-top:10px;">
-                        <%Object value = session.getAttribute("msg");
-                        if (value != null){%>
-                        <i><%=value%></i>
-                        <%}%>
+                            <%Object value = session.getAttribute("msg");
+                                if (value != null){%>
+                            <i><%=value%></i>
+                            <%}%>
                         </a>
                     </li>
 
@@ -83,17 +83,17 @@
                         <a class="nav-link active" href="login.jsp"><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
-                    user = true;
-                    if (user == true) {%>
+                        user = true;
+                        if (user == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% boolean admin;
-                    admin = true;
-                    if (admin == true) {%>
+                        admin = true;
+                        if (admin == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -102,30 +102,30 @@
     </nav>
 </header>
 
-    <body class="text-center" style="background-image: url('img/login.png')">
+<body class="text-center" style="background-image: url('img/login.png')">
 
-        <main class="form-signin bg-white" style="border-radius:20px; height:300px">
-            <form action="LoginServlet" method="post">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<main class="form-signin bg-white" style="border-radius:20px; height:300px">
+    <form>
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-                <div class="form-floating" style="margin-top:30px">
-                    <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username">
-                    <label for="floatingInput">Username</label>
-                </div>
-                <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                </div>
+        <div class="form-floating" style="margin-top:30px">
+            <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username">
+            <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
 
-                <!--<div class="checkbox mb-3">
-                    <label>
-                        <input type="checkbox" style="color:white; margin-top:70px" value="remember-me"> Remember me
-                    </label>
-                </div> -->
-                <button class="w-10 btn btn-lg btn-primary" style="color:white" type="submit">Sign in</button>
-                <button class="w-10 btn btn-lg btn-secondary" style="color:white" type="submit">Sign up</button>
-            </form>
-        </main>
-    </body>
+        <!--<div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" style="color:white; margin-top:70px" value="remember-me"> Remember me
+            </label>
+        </div> -->
+        <button class="w-10 btn btn-lg btn-primary" type="submit" formaction="LoginServlet" formmethod="post">Sign in</button>
+        <button class="w-10 btn btn-lg btn-secondary" type="submit" formaction="signup.jsp" formmethod="post">Sign up</button>
+    </form>
+</main>
+</body>
 </html>
 

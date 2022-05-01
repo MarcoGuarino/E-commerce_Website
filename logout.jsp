@@ -36,7 +36,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Marche
                         </a>
-                    
+
                         <ul class="dropdown-menu" style="color:orange"aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item dropdown-show" href="#">Nike</a></li>
                             <li><a class="dropdown-item" href="#">Adidas</a></li>
@@ -44,51 +44,51 @@
                             <li><a class="dropdown-item" href="#">New Balance</a></li>
                         </ul>
                     </li>
-                   <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
 
                 <ul class="nav navbar-nav ml-auto">
-                <!--
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <!<button class="btn btn-outline-success" style="background-color:orange; color:white; border-color:white" type="submit">Search</button>
-                        </form>
-                    </li>
-                -->
+                    <!--
+                        <li class="nav-item">
+                            <form class="d-flex">
+                                <!<button class="btn btn-outline-success" style="background-color:orange; color:white; border-color:white" type="submit">Search</button>
+                            </form>
+                        </li>
+                    -->
                     <li class="nav-item">
                         <a class="nav-link" style="margin-top:10px;">
-                        <%Object value = session.getAttribute("msg");                            
-                        if (value != null){%>
-                           <i><%=value%></i>
-                        <%}%>
+                            <%Object value = session.getAttribute("msg");
+                                if (value != null){%>
+                            <i><%=value%></i>
+                            <%}%>
                         </a>
                     </li>
-                           
+
                     <%
-                    String dest;
-                    if (value == null)
-                        dest = "login.jsp";
-                    else{
-                        dest = "logout.jsp";
+                        String dest;
+                        if (value == null)
+                            dest = "login.jsp";
+                        else{
+                            dest = "logout.jsp";
                         }
                     %>
                     <li class="nav-item">
-                    <a class="nav-link active" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                        <a class="nav-link active" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% boolean user;
-                    user = true;
-                    if (user == true) {%>
+                        user = true;
+                        if (user == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% boolean admin;
-                    admin = true;
-                    if (admin == true) {%>
+                        admin = true;
+                        if (admin == true) {%>
                     <li class="nav-item">
-                       <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -96,18 +96,19 @@
         </div>
     </nav>
 </header>
-  
-    <body class="text-center" style="background-image: url('img/login.png')">
-    <main>
+
+<body class="text-center" style="background-image: url('img/login.png')">
+<main>
     <div class="col d-flex justify-content-center" style="margin-top:250px; widht:50px">
         <div class="card w-20 h-40">
-           <div class="card-body">
-           <h5 class="card-title">username: role</h5>
-           <p class="card-text">Sei admin</p>
-           <a href="LogoutServlet" class="btn btn-danger">effettua il logout</a>
-           </div>
+            <div class="card-body">
+                <h5 class="card-title">username: role</h5>
+                <p class="card-text">Sei admin</p>
+                <a href="LogoutServlet" class="btn btn-danger">effettua il logout</a>
+            </div>
         </div>
     </div>
-    </main> 
-    </body>
+</main>
+</body>
+</body>
 </html>
