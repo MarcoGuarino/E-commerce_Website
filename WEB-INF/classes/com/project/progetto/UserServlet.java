@@ -26,7 +26,6 @@ public class UserServlet extends HttpServlet {
         String comunen = request.getParameter("comunen");
         String indirizzo = request.getParameter("indirizzo");
         String paese = request.getParameter("paese");
-        int cap = Integer.parseInt(request.getParameter("cap"));
 
 
 
@@ -40,7 +39,7 @@ public class UserServlet extends HttpServlet {
         utente.setComunen(comunen);
         utente.setIndirizzo(indirizzo);
         utente.setPaese(paese);
-        utente.setCap(cap);
+
 
 
         try {
@@ -50,6 +49,6 @@ public class UserServlet extends HttpServlet {
         }
 
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("login.jsp");
     }
 }

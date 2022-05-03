@@ -59,16 +59,16 @@
                     -->
                     <li class="nav-item">
                         <a class="nav-link" style="margin-top:10px;">
-                            <%Object value = session.getAttribute("msg");
-                                if (value != null){%>
-                            <i><%=value%></i>
+                            <%Object valuemsg = session.getAttribute("msg");
+                                if (valuemsg != null){%>
+                            <i><%=valuemsg%></i>
                             <%}%>
                         </a>
                     </li>
 
                     <%
                         String dest;
-                        if (value == null)
+                        if (valuemsg == null)
                             dest = "login.jsp";
                         else{
                             dest = "logout.jsp";
@@ -77,16 +77,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
-                    <% boolean user;
-                        user = true;
-                        if (user == true) {%>
+                    <% Object value_us = session.getAttribute("admin");
+                        if (value_us == "no") {%>
                     <li class="nav-item">
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
-                    <% boolean admin;
-                        admin = true;
-                        if (admin == true) {%>
+                    <% Object value_ad = session.getAttribute("admin");
+                        if (value_ad == "yes") {%>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>

@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
         msg = "welcome, " + username;
         HttpSession session = request.getSession();
         session.setAttribute("msg", msg);
+        session.setAttribute("utente", username);
         RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
         req.forward(request, response);
         response.setContentType("text/html");

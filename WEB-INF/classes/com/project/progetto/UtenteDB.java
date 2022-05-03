@@ -6,15 +6,15 @@ public class UtenteDB {
 
     public int inserisciUtente(Utente utente) throws ClassNotFoundException {
         String SQL = "INSERT INTO utenti" +
-                "  (nome, cognome, username, email, pwd, datan, comunen, indirizzo, paese, cap) VALUES " +
-                " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "  (nome, cognome, username, email, pwd, datan, comunen, indirizzo, paese) VALUES " +
+                " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         int result = 0;
 
-        Class.forName("org.mariadb.jdbc.Driver");
-        // Class.forName("com.mysql.jdbc.Driver");
+        //Class.forName("org.mariadb.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver"); //potrebbe essere Class.forName("com.mysql.cj.jdbc.Driver");
 
-        String url = "jdbc:mariadb://localhost:3306/sneaka";
+        String url = "jdbc:mysql://localhost:3306/sneaka";
         String user = "sneaka";
         String password = "sneaka";
 
@@ -31,7 +31,6 @@ public class UtenteDB {
             preparedStatement.setString(7, utente.getComunen());
             preparedStatement.setString(8, utente.getIndirizzo());
             preparedStatement.setString(9, utente.getPaese());
-            preparedStatement.setInt(10, utente.getCap());
 
             System.out.println(preparedStatement);
 

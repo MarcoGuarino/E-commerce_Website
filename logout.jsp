@@ -59,16 +59,16 @@
                     -->
                     <li class="nav-item">
                         <a class="nav-link" style="margin-top:10px;">
-                            <%Object value = session.getAttribute("msg");
-                                if (value != null){%>
-                            <i><%=value%></i>
+                            <%Object valuemsg = session.getAttribute("msg");
+                                if (valuemsg != null){%>
+                            <i><%=valuemsg%></i>
                             <%}%>
                         </a>
                     </li>
 
                     <%
                         String dest;
-                        if (value == null)
+                        if (valuemsg == null)
                             dest = "login.jsp";
                         else{
                             dest = "logout.jsp";
@@ -77,16 +77,14 @@
                     <li class="nav-item">
                         <a class="nav-link active" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
-                    <% boolean user;
-                        user = true;
-                        if (user == true) {%>
+                    <% Object value_us = session.getAttribute("admin");
+                        if (value_us == "no") {%>
                     <li class="nav-item">
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
-                    <% boolean admin;
-                        admin = true;
-                        if (admin == true) {%>
+                    <% Object value_ad = session.getAttribute("admin");
+                        if (value_ad == "yes") {%>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
@@ -102,8 +100,17 @@
     <div class="col d-flex justify-content-center" style="margin-top:250px; widht:50px">
         <div class="card w-20 h-40">
             <div class="card-body">
-                <h5 class="card-title">username: role</h5>
-                <p class="card-text">Sei admin</p>
+                <%Object user_log = session.getAttribute("utente");%> 
+                <h5 class="card-title"><%=user_log%></h5>
+                    <% //Object value_us = session.getAttribute("admin");
+                        if (value_us == "no") {%>
+                            <p class="card-text">Sei un user</p>
+                    <%}%>
+                    <% //Object value_ad = session.getAttribute("admin");
+                        if (value_ad == "yes") {%>
+                            <p class="card-text">Sei admin</p>
+                    <%}%>
+
                 <a href="LogoutServlet" class="btn btn-danger">effettua il logout</a>
             </div>
         </div>

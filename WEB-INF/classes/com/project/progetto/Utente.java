@@ -13,7 +13,7 @@ public class Utente {
     private String comunen;
     private String indirizzo;
     private String paese;
-    private int cap;
+    private String cap;
 
     public String getNome() {
         return nome;
@@ -85,14 +85,6 @@ public class Utente {
 
     public void setPaese(String paese) {
         this.paese = paese;
-    }
-
-    public int getCap() {
-        return cap;
-    }
-
-    public void setCap(int cap) {
-        this.cap = cap;
     }
 }
 
