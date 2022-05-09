@@ -13,7 +13,16 @@ public class Utente {
     private String comunen;
     private String indirizzo;
     private String paese;
-    private String cap;
+    private String premium;
+
+
+    public String getPremium(){
+        return premium;
+    }
+
+    public void setPremium(String premium){
+        this.premium = premium;
+    }
 
     public String getNome() {
         return nome;

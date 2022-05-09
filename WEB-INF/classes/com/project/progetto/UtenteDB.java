@@ -6,8 +6,8 @@ public class UtenteDB {
 
     public int inserisciUtente(Utente utente) throws ClassNotFoundException {
         String SQL = "INSERT INTO utenti" +
-                "  (nome, cognome, username, email, pwd, datan, comunen, indirizzo, paese) VALUES " +
-                " (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                "  (nome, cognome, username, email, pwd, datan, comunen, indirizzo, paese, premium) VALUES " +
+                " (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         int result = 0;
 
@@ -31,6 +31,7 @@ public class UtenteDB {
             preparedStatement.setString(7, utente.getComunen());
             preparedStatement.setString(8, utente.getIndirizzo());
             preparedStatement.setString(9, utente.getPaese());
+            preparedStatement.setString(10, utente.getPremium());
 
             System.out.println(preparedStatement);
 

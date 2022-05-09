@@ -32,7 +32,10 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("msg", msg);
         session.setAttribute("utente", username);
-        RequestDispatcher req = request.getRequestDispatcher("/index.jsp");
+        Object value_a_u = session.getAttribute("admin");
+        RequestDispatcher req;
+        if (value_a_u == "yes") {req = request.getRequestDispatcher("/indexA.jsp");}
+        else {req = request.getRequestDispatcher("/index.jsp");}
         req.forward(request, response);
         response.setContentType("text/html");
     }

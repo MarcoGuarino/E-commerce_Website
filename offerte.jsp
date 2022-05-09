@@ -82,7 +82,7 @@
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="admin.jsp"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -107,20 +107,55 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <% for(int i = 0; i < 10; i+=1) { %>
+
+                <%@ page import="java.io.IOException"%>
+                <%@ page import="java.sql.*" %> 
+                <%@ page import="java.util.*" %>
+                <%
+                try {
+                Class.forName("com.mysql.jdbc.Driver");
+                } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+                }
+
+                String url = "jdbc:mysql://localhost:3306/sneaka";
+                String user = "sneaka";
+                String password = "sneaka";
+
+                String SQL = "SELECT id,nome,genere,prezzo,prezzoOF,immagine FROM scarpa where offerta=?";
+
+                Connection connection = DriverManager.getConnection(url, user, password);
+
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+                preparedStatement.setString(1, "si");
+
+                ResultSet result = preparedStatement.executeQuery();
+
+                ResultSetMetaData rsmd = result.getMetaData();
+                while (result.next()){
+                int id = Integer.parseInt(result.getString(1));
+                String modello = (String)(result.getString(2));
+                String genere = (String)(result.getString(3));
+                int prezzo = Integer.parseInt(result.getString(4));
+                int prezzoOF = Integer.parseInt(result.getString(5));
+                String immagine = (String)(result.getString(6));
+                %>
                 <div class="col">
                     <div class="card shadow-sm">
                         <svg class="bd-placeholder-img card-img-top" width="200" height="200"
                              xmlns="http://www.w3.org/2000/svg">
-                            <a href="buy.jsp"><image href="img/b.webp" height="200" width="200"></image></a>
+                            <a href="buy.jsp?modello=<%=modello%>&genere=<%=genere%>&prezzo=<%=prezzo%>&immagine=<%=immagine%>"><image href="<%=immagine%>" height="200" width="200"></image></a>
                         </svg>
                         <div class="card-body">
-                            <p class="card-price">modello</p>
-                            <p class="card-price"><del>30€</del>&nbsp;&nbsp;&nbsp;&nbsp;20€</p>
+                            <p class="card-price"><%=modello%>&nbsp;&nbsp;&nbsp;&nbsp;<%=genere%></p>
+                            <p class="card-price"><del><%=prezzo%>€</del>&nbsp;&nbsp;&nbsp;&nbsp;<%=prezzoOF%>€</p>
                         </div>
                     </div>
                 </div>
-                <% } %>
+                <%
+                }
+                %>
+
             </div>
         </div>
     </div>

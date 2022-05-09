@@ -86,7 +86,7 @@
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="admin.jsp"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -149,11 +149,18 @@
                             <input type="text" class="form-control" name="paese" placeholder="" required>
                         </div>
 
+                        <div class="col-12">
+                            <label class="form-label">Premium</label>
+                            <select class="form-control" name="premium">
+                            <option selected>si</option>
+                            <option>no</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <hr class="my-4">
+                    <hr class="my-3">
 
-                    <button class="w-10 btn btn-primary btn-lg" type="submit">Registrati</button>
+                    <button class="w-10 btn btn-primary btn-success" type="submit">Registrati</button>
                 </form>
             </div>
         </div>

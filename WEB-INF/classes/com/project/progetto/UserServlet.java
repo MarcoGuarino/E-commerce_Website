@@ -26,7 +26,7 @@ public class UserServlet extends HttpServlet {
         String comunen = request.getParameter("comunen");
         String indirizzo = request.getParameter("indirizzo");
         String paese = request.getParameter("paese");
-
+        String premium = request.getParameter("premium");
 
 
         Utente utente = new Utente();
@@ -39,7 +39,7 @@ public class UserServlet extends HttpServlet {
         utente.setComunen(comunen);
         utente.setIndirizzo(indirizzo);
         utente.setPaese(paese);
-
+        utente.setPremium(premium);
 
 
         try {

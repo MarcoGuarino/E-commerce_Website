@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.List;
 
 public class FilterLog implements Filter {
 
@@ -28,7 +29,7 @@ public class FilterLog implements Filter {
         String user = "sneaka";
         String password = "sneaka";
 
-        String SQL = "SELECT id,username,pwd FROM utenti where username=? and pwd=?";
+        String SQL = "SELECT id,username,pwd,premium FROM utenti where username=? and pwd=?";
 
 
         try (Connection connection = DriverManager
@@ -47,7 +48,9 @@ public class FilterLog implements Filter {
 
             if (result.next()){
                 int idValue = Integer.parseInt(result.getString(1));
+                String premium = (String)(result.getString(4));
                 HttpSession session = req.getSession(true);
+                session.setAttribute("premium", premium);
                 if (idValue == 0) session.setAttribute("admin", "yes");
                 else session.setAttribute("admin", "no");
                 chain.doFilter(request, response);

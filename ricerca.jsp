@@ -86,7 +86,7 @@
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="admin.jsp"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -100,43 +100,51 @@
   <section class="py-1 text-center container-fluid">
     <div class="row py-lg-1">
       <div class="col-lg-7 col-md-8 mx-auto">
-        <form class="row row-cols-5" style="margin-top:65px">
+        <form class="row row-cols-5" style="margin-top:65px" method="post" action="ricerca.jsp">
 
           <div class="col-md-2">
             <label for="inputState1" class="form-label">Marca</label>
             <select id="inputState1" class="form-select" name="marca">
-              <option selected>Choose...</option>
-              <option>...</option>
+              <option selected>Scegli...</option>
+              <option>Nike</option>
+              <option>Adidas</option>
+              <option>Converse</option>
+              <option>New Balance</option>
             </select>
           </div>
 
           <div class="col-md-2">
             <label for="inputState2" class="form-label">Uomo/Donna/Bambino</label>
             <select id="inputState2" class="form-select" name="uomo/donna/bambino">
-              <option selected>Choose...</option>
-              <option>...</option>
+              <option selected>Scegli...</option>
+              <option>Uomo</option>
+              <option>Donna</option>
+              <option>Bambino</option>
             </select>
           </div>
 
           <div class="col-md-2">
             <label for="inputState3" class="form-label">Colore</label>
             <select id="inputState3" class="form-select" name="colore">
-              <option selected>Choose...</option>
-              <option>...</option>
+              <option selected>Scegli...</option>
+              <option>Rosso</option>
+              <option>Giallo</option>
+              <option>Nero</option>
+              <option>Bianco</option>
             </select>
           </div>
 
           <div class="col-md-3">
             <label for="customRange1" class="form-label">Prezzo Minimo</label>
-            <input type="range" class="form-range" min="0" max="100" value="24" id="customRange1" oninput="this.nextElementSibling.value = this.value">
-            <output>24</output>
+            <input type="range" class="form-range" min="0" max="500" value="0" id="customRange1" oninput="this.nextElementSibling.value = this.value">
+            <output>0</output>
 
           </div>
 
           <div class="col-md-3">
             <label for="customRange2" class="form-label">Prezzo Massimo</label>
-            <input type="range" class="form-range" min="0" max="100" value="24" id="customRange2" oninput="this.nextElementSibling.value = this.value">
-            <output>24</output>
+            <input type="range" class="form-range" min="0" max="500" value="500" id="customRange2" oninput="this.nextElementSibling.value = this.value">
+            <output>500</output>
 
           </div>
           <div class="col-12">

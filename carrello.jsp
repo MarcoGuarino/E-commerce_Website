@@ -87,7 +87,7 @@
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="admin.jsp"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -100,6 +100,9 @@
   <div class="container-fluid" style="margin-top:90px">
     <div class="row">
       <div class="col-12 col-sm-8 col-lg-12">
+        <%
+        Object premium = session.getAttribute("premium");
+        if (premium.equals("si")){%>
         <section class="py-7container">
           <div style="background-color:black; color:white">
             <div class="mx-auto">
@@ -107,6 +110,8 @@
             </div>
           </div>
         </section>
+        <%}%>
+
         <h1 class="fw-bold">Il tuo carrello</h1>
         <ul class="list-group">
           <% for(int i = 0; i < 10; i+=1) { %>

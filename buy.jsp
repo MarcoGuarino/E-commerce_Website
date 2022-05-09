@@ -82,7 +82,7 @@
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
+                        <a class="nav-link" href="admin.jsp"><i class="bi bi-pencil-square fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                 </ul>
@@ -95,49 +95,33 @@
 <main>
   <div class="container mt-5">
   </div>
+      <%@ page import="java.util.*" %>
+      <%
+      String modello = request.getParameter("modello");
+      String genere  = request.getParameter("genere");
+      String prezzo2 = request.getParameter("prezzo");
+      int prezzo = Integer.parseInt(request.getParameter("prezzo"));
+      String immagine = request.getParameter("immagine");
+      %>
   <div class="container">
     <div class="row">
       <div class="col-md-6">
         <div>
-          <img src="img/b.webp" width="300" height="250">
+          <img src="<%=immagine%>" width="300" height="250">
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" style="width:600px">
         <div class="row">
-          <h2>Nike Air Jordan 1 low</h2>
+          <h2><%=modello%></h2>
+          <h4><%=genere%></h4>
         </div>
         <div class="row">
-          <h1><i class="fa fa-inr" aria-hidden="true"></i> 599 €</h1>
-          <!--&nbsp; &nbsp;
-          <h3><del>799</del></h3>
-          &nbsp; &nbsp;
-          <h2 class="text-success">30% off</h2>
-        </div>-->
+          <h1><i class="fa fa-inr" aria-hidden="true"></i><%=prezzo%> €</h1>
           <div class="row">
-            <!--<h3 class="text-warning"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i> <i class="fa fa-star-half-o" aria-hidden="true"></i><i class="fa fa-star-o" aria-hidden="true"></i></h3>-->
             <h5>Rating: 4.5/5</h5>
           </div>
-          <!--<div class="row">
-            <p><i class="text-success fa fa-check-square-o" aria-hidden="true"></i> <strong>Bank Offer</strong> 20% Instant Discount on SBI Credit Cards</p>
-            <p><i class="text-success fa fa-check-square-o" aria-hidden="true"></i> <strong>Bank Offer</strong> 5% Unlimited Cashback on Flipkart Axis Bank Credit Card </p>
-            <p><i class="text-success fa fa-check-square-o" aria-hidden="true"></i> <strong>Bank Offer</strong> Extra 5% off* with Axis Bank Buzz Credit Card</p>
-            <p><i class="text-success fa fa-check-square-o" aria-hidden="true"></i> <strong>Bank Offer</strong>20% Instant Discount on pay with <i class="fa fa-google-wallet" aria-hidden="true"></i> google wallet </p>
-          </div>-->
-          <!--<div class="row mt-4">
-            <h3 class="text-info"><i class="fa fa-map-marker" aria-hidden="true"></i></h3>
-            <p style="font-size: 20px"> &nbsp; Delivery by23 Jul, Tuesday | &nbsp; <span class="text-success">FREE</span> </p>
-          </div>-->
           <div class="row mt-4">
             <h4>Size: &nbsp; &nbsp;</h4>
-            <!--<div class="dropdown show"> <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Select sizes </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> <a class="dropdown-item" href="#">small</a> <a class="dropdown-item" href="#">meduam </a> <a class="dropdown-item" href="#">large</a> </div>
-                            <ul class="dropdown-menu" style="color:orange"aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Nike</a></li>
-                                <li><a class="dropdown-item" href="#">Adidas</a></li>
-                                <li><a class="dropdown-item" href="#">Reebok</a></li>
-                            </ul>
-              </div>
-            </div>-->
             <form method="POST">
               <div class="form-group" style="width:100px; height:100px">
                 <select class="form-control" id="exampleFormControlSelect1">
@@ -151,14 +135,22 @@
                 </select>
                 &nbsp;
                 &nbsp;
-                <input class="btn btn-success text-light"  name="action" type="submit" value="acquisto">
+                        <%
+                        String destin = "login.jsp";
+                            if (valuemsg != null){ destin = "buy.jsp?modello=" + modello + "&genere=" + genere + "&prezzo=" + prezzo + "&immagine=" + immagine;}
+                        String destin2 = "login.jsp";
+                            if (valuemsg != null){ destin2 = "carrello.jsp";}%>
+                <a href=<%=destin%>>    
+                <input class="btn btn-success text-light"  type="button" value="acquisto">
+                </a>
                 &nbsp;
-                <input class="btn btn-primary text-light" style="margin-top:10px"name="action" type="submit" value="carrello">
+                <a href=<%=destin2%>>
+                <input class="btn btn-primary text-light" style="margin-top:10px" type="button" value="carrello">
+                </a>
               </div>
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </div>
