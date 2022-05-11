@@ -33,15 +33,14 @@
                         <a class="nav-link" href="offerte.jsp">Offerte</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Marche
-                        </a>
-
+                        </a> 
                         <ul class="dropdown-menu" style="color:orange"aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item dropdown-show" href="#">Nike</a></li>
-                            <li><a class="dropdown-item" href="#">Adidas</a></li>
-                            <li><a class="dropdown-item" href="#">Converse</a></li>
-                            <li><a class="dropdown-item" href="#">New Balance</a></li>
+                            <li><a class="dropdown-item dropdown-show" href="ricerca.jsp?marcanav=nike">Nike</a></li>
+                            <li><a class="dropdown-item" href="ricerca.jsp?marcanav=adidas" >Adidas</a></li>
+                            <li><a class="dropdown-item" href="ricerca.jsp?marcanav=converse">Converse</a></li>
+                            <li><a class="dropdown-item" href="ricerca.jsp?marcanav=new balance" >New Balance</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -102,15 +101,25 @@
       <div class="col-lg-7 col-md-8 mx-auto">
         <form class="row row-cols-5" style="margin-top:65px" method="post" action="ricerca.jsp">
 
-          <%Object strMarca = request.getParameter("marca");%>
+          <%Object strMarca = request.getParameter("marca");
+          Object strMarcanav = request.getParameter("marcanav");%>
+          
           <div class="col-md-2">
             <label for="inputState1" class="form-label">Marca</label>
             <select id="inputState1" class="form-select" name="marca">
+              <%if (strMarcanav != null){%>
+              <%if (strMarcanav.equals("nike"))%><option selected>nike</option><%else%><option>nike</option>
+              <%if (strMarcanav.equals("adidas"))%><option selected>adidas</option><%else%><option>adidas</option>
+              <%if (strMarcanav.equals("converse"))%><option selected>converse</option><%else%><option>converse</option>
+              <%if (strMarcanav.equals("new balance"))%><option selected>new balance</option><%else%><option>new balance</option>
+              <%}%>
+              <%if (strMarcanav == null){%>
               <%if (strMarca != null && strMarca.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
               <%if (strMarca != null && strMarca.equals("nike"))%><option selected>nike</option><%else%><option>nike</option>
               <%if (strMarca != null && strMarca.equals("adidas"))%><option selected>adidas</option><%else%><option>adidas</option>
               <%if (strMarca != null && strMarca.equals("converse"))%><option selected>converse</option><%else%><option>converse</option>
               <%if (strMarca != null && strMarca.equals("new balance"))%><option selected>new balance</option><%else%><option>new balance</option>
+              <%}%>
             </select>
           </div>
 
@@ -176,6 +185,7 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
         <%
+        Object marcanav = request.getParameter("marcanav"); //se la richiesta mi viene da ricerca.jsp allora questa è in null
         Object marca = request.getParameter("marca");
         Object udb = request.getParameter("uomo/donna/bambino");
         Object colore = request.getParameter("colore");
@@ -203,6 +213,9 @@
         Connection connection = DriverManager.getConnection(url,user,password);
         
         PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+
+
         if (marca == null){
           marca="%";
           udb="%";
@@ -210,6 +223,11 @@
           min="0";
           max="350";
         }
+
+        if (marcanav != null){
+          marca = marcanav;
+        }
+
         preparedStatement.setString(1, marca.toString());
         preparedStatement.setString(2, udb.toString());
         preparedStatement.setString(3, colore.toString());
@@ -217,6 +235,8 @@
         preparedStatement.setString(5, max.toString());
         preparedStatement.setString(6, min.toString());
         preparedStatement.setString(7, max.toString());
+
+
 
         ResultSet result = preparedStatement.executeQuery();
 

@@ -33,15 +33,14 @@
                         <a class="nav-link" href="offerte.jsp">Offerte</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Marche
-                        </a>
-
+                        </a> 
                         <ul class="dropdown-menu" style="color:orange"aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item dropdown-show" href="#">Nike</a></li>
-                            <li><a class="dropdown-item" href="#">Adidas</a></li>
-                            <li><a class="dropdown-item" href="#">Converse</a></li>
-                            <li><a class="dropdown-item" href="#">New Balance</a></li>
+                            <li><a class="dropdown-item dropdown-show" href="ricerca.jsp?marcanav=nike">Nike</a></li>
+                            <li><a class="dropdown-item" href="ricerca.jsp?marcanav=adidas" >Adidas</a></li>
+                            <li><a class="dropdown-item" href="ricerca.jsp?marcanav=converse">Converse</a></li>
+                            <li><a class="dropdown-item" href="ricerca.jsp?marcanav=new balance" >New Balance</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
