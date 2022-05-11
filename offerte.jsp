@@ -144,7 +144,7 @@
                     <div class="card shadow-sm">
                         <svg class="bd-placeholder-img card-img-top" width="200" height="200"
                              xmlns="http://www.w3.org/2000/svg">
-                            <a href="buy.jsp?modello=<%=modello%>&genere=<%=genere%>&prezzo=<%=prezzo%>&immagine=<%=immagine%>"><image href="<%=immagine%>" height="200" width="200"></image></a>
+                            <a href="buy.jsp?modello=<%=modello%>&genere=<%=genere%>&prezzo=<%=prezzoOF%>&immagine=<%=immagine%>"><image href="<%=immagine%>" height="200" width="200"></image></a>
                         </svg>
                         <div class="card-body">
                             <p class="card-price"><%=modello%>&nbsp;&nbsp;&nbsp;&nbsp;<%=genere%></p>

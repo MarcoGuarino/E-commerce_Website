@@ -16,7 +16,7 @@
 </head>
 
 
-<body>
+<body class="text-center" style="background-image: url('img/login.png')">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
         <div class="container-fluid">
@@ -95,7 +95,8 @@
     </nav>
 </header>
 
-<body class="text-center" style="background-image: url('img/login.png')">
+
+
 <main>
     <div class="col d-flex justify-content-center" style="margin-top:250px; widht:50px">
         <div class="card w-20 h-40">
@@ -116,6 +117,6 @@
         </div>
     </div>
 </main>
-</body>
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

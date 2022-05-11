@@ -135,5 +135,6 @@
   </div>
 </main>
 
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

@@ -30,6 +30,7 @@
     <link href="bootstrap/css/login.css" rel="stylesheet">
 </head>
 
+<body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
         <div class="container-fluid">
@@ -132,6 +133,7 @@
         <button class="w-10 btn btn-lg btn-secondary" type="submit" formaction="signup.jsp" formmethod="post">Sign up</button>
     </form>
 </main>
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>
 
