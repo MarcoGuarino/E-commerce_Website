@@ -71,58 +71,79 @@
         <div class="row g-5">
             <div class="col-md-7 col-lg-8">
                 <h4 class="mb-3">Ciao admin, aggiungi la scarpa nel database!</h4>
-                <form class="form" action="UserServlet" method="post">
+                <form class="form" action="ScarpaServlet" method="post">
                     <div class="row g-3">
-                        <div class="col-sm-6">
-                            <label class="form-label">Nome</label>
-                            <input type="text" class="form-control" name="nome" placeholder="" required>
+                        <div class="col-12">
+                            <label class="form-label">nome</label>
+                            <input type="text" class="form-control" name="nome" required>
                         </div>
 
-                        <div class="col-sm-6">
-                            <label class="form-label">Cognome</label>
-                            <input type="text" class="form-control" name="cognome" placeholder="" required>
+
+                        <div class="col-12">
+                           <label class="form-label">marca</label>
+                           <select class="form-control" name="marca" required>
+                           <option selected></option> 
+                           <option>nike</option>
+                           <option>adidas</option>
+                           <option>newbalance</option>
+                           <option>converse</option>
+                           </select>
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label">Username</label>
-                            <input type="text" class="form-control" name="username" placeholder="" required>
+                           <label class="form-label">colore</label>
+                           <select class="form-control" name="colore" required>
+                           <option selected></option>
+                           <option>nero</option>
+                           <option>bianco</option>
+                           <option>rosso</option>
+                           <option>grigio</option>
+                           </select>
+                        </div>
+
+
+                        <div class="col-12">
+                           <label class="form-label">genere</label>
+                           <select class="form-control" name="genere" required>
+                           <option selected></option>
+                           <option>uomo</option>
+                           <option>donna</option>
+                           <option>bambino</option>
+                           </select>
+                        </div> 
+
+
+                        <div class="col-12">
+                            <label class="form-label">prezzo</label>
+                            <input type="text" class="form-control" name="prezzo" required>
+                        </div>
+
+
+                        <div class="col-12">
+                           <label class="form-label">in offerta?</label>
+                           <select class="form-control" name="offerta" required>
+                           <option selected></option>
+                           <option>si</option>
+                           <option>no</option>
+                           </select>
+                        </div>
+
+
+                        <div class="col-12">
+                            <label class="form-label">prezzo in offerta</label>
+                            <input type="text" class="form-control" name="prezzoOF">
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" placeholder="" required>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control" name="pwd" placeholder="" required>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label">Data di Nascita</label>
-                            <input type="date" class="form-control" name="datan" placeholder="" required>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label">Comune di Nascita</label>
-                            <input type="text" class="form-control" name="comunen" placeholder="" required>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label">Indirizzo</label>
-                            <input type="text" class="form-control" name="indirizzo" placeholder="" required>
-                        </div>
-
-                        <div class="col-12">
-                            <label class="form-label">Paese</label>
-                            <input type="text" class="form-control" name="paese" placeholder="" required>
+                            <label class="form-label">immagine</label>
+                            <input type="text" class="form-control" name="immagine"required>
                         </div>
 
                     </div>
 
                     <hr class="my-4">
 
-                    <button class="w-10 btn btn-primary btn-lg" type="submit">Registrati</button>
+                    <button class="w-10 btn btn-primary btn-lg" type="submit">Aggiungi</button>
                 </form>
             </div>
         </div>

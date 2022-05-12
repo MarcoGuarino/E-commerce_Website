@@ -38,4 +38,21 @@
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/UserServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ScarpaServlet</servlet-name>
+        <servlet-class>com.project.progetto.ScarpaServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>ScarpaServlet</servlet-name>
+        <url-pattern>/ScarpaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.project.progetto.CartServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

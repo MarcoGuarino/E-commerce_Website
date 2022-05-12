@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+ 
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,10 +8,10 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="stili.css">
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-
+ 
   <title>Sneaka</title>
 </head>
-
+ 
 <body style="padding-top:65px;">
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
@@ -43,7 +43,7 @@
                         <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
-
+ 
                 <ul class="nav navbar-nav ml-auto">
                     <!--
                         <li class="nav-item">
@@ -60,7 +60,7 @@
                             <%}%>
                         </a>
                     </li>
-
+ 
                     <%
                         String dest;
                         if (valuemsg == null)
@@ -89,8 +89,8 @@
         </div>
     </nav>
 </header>
-
-
+ 
+ 
 <main>
   <div class="container mt-5">
   </div>
@@ -121,46 +121,51 @@
           </div>
           <div class="row mt-4">
             <h4>Size: &nbsp; &nbsp;</h4>
-            <form method="POST">
-              <div class="form-group" style="width:100px; height:100px">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>37</option>
-                  <option>38</option>
-                  <option>39</option>
-                  <option>40</option>
-                  <option>41</option>
-                  <option>42</option>
-                  <option>43</option>
-                </select>
+            <form>
+                <div class="col-md-4">
+                    <label for="size" class="form-label">Size</label>
+                    <select class="form-select" id="size" name="size" required>
+                        <option value="">Choose...</option>
+                        <option selected>37</option>
+                        <option>38</option>
+                        <option>39</option>
+                        <option>40</option>
+                        <option>41</option>
+                        <option>42</option>
+                        <option>43</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please choose a size.
+                    </div>
+                </div>
                 &nbsp;
-                &nbsp;
-                        <%
-                        String destin = "login.jsp";
-                            if (valuemsg != null){ destin = "buy.jsp?modello=" + modello + "&genere=" + genere + "&prezzo=" + prezzo + "&immagine=" + immagine;}
-                        String destin2 = "login.jsp";
-                            if (valuemsg != null){ destin2 = "carrello.jsp";}%>
-                <a href=<%=destin%>>    
-                <input class="btn btn-success text-light"  type="button" value="acquisto">
-                </a>
-                &nbsp;
-                <a href=<%=destin2%>>
-                <input class="btn btn-primary text-light" style="margin-top:10px" type="button" value="carrello">
-                </a>
-              </div>
+                &nbsp;<%
+                    String destin = "login.jsp";
+                    if (valuemsg != null){ destin = "buy.jsp?modello=" + modello + "&genere=" + genere + "&prezzo=" + prezzo + "&immagine=" + immagine;}
+                    String destin2 = "login.jsp";
+                    if (valuemsg != null){ destin2 = "CartServlet?modello=" + modello + "&prezzo=" + prezzo + "&immagine=" + immagine;}
+                 %>
+ 
+                <br>
+ 
+                <button class="w-10 btn btn-lg btn-success" type="submit" formaction=<%=destin%> formmethod="post">buy</button>
+                <button class="w-10 btn btn-lg btn-primary" type="submit" formaction=<%=destin2%> formmethod="post">cart</button>
+ 
+          </div>
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-
+ 
+ 
   <div class="container">
     <br/>
     <div class="row mt-5">
       <h2>Prodotti simili</h2>
     </div>
-
+ 
     <div class="row mt-2">
       <div class="col-md-3">
         <div class="card">
@@ -173,8 +178,8 @@
           </div>
         </div>
       </div>
-
-
+ 
+ 
       <div class="col-md-3">
         <div class="card">
           <img class="card-img-top img-fluid" src="img/b.webp">
@@ -186,8 +191,8 @@
           </div>
         </div>
       </div>
-
-
+ 
+ 
       <div class="col-md-3">
         <div class="card">
           <img class="card-img-top img-fluid" src="img/b.webp">
@@ -199,7 +204,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="col-md-3">
         <div class="card">
           <img class="card-img-top img-fluid" src="img/b.webp">
@@ -209,20 +214,20 @@
           <div class="card-text">
             <a  class="btn btn-secondary text-light" href="buy.jsp"> Details</a> &nbsp;<br/><br/>
           </div>
-
+ 
         </div>
       </div>
     </div>
   </div>
-
-
-
+ 
+ 
+ 
 </main>
-
-
-
-
-
+ 
+ 
+ 
+ 
+ 
 <script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

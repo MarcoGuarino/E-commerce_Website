@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+ 
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,15 +8,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
+ 
   <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
   <link href="bootstrap/css/carousel.css" rel="stylesheet">
   <link rel="stylesheet" href="stili_carrello.css">
-
+ 
   <title>Sneaka</title>
 </head>
-
-
+ 
+ 
 <body>
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-3">
@@ -48,7 +48,7 @@
                         <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
-
+ 
                 <ul class="nav navbar-nav ml-auto">
                     <!--
                         <li class="nav-item">
@@ -65,7 +65,7 @@
                             <%}%>
                         </a>
                     </li>
-
+ 
                     <%
                         String dest;
                         if (valuemsg == null)
@@ -94,7 +94,7 @@
         </div>
     </nav>
 </header>
-
+ 
 <main>
   <div class="container-fluid" style="margin-top:90px">
     <div class="row">
@@ -110,21 +110,67 @@
           </div>
         </section>
         <%}%>
-
+ 
         <h1 class="fw-bold">Il tuo carrello</h1>
         <ul class="list-group">
-          <% for(int i = 0; i < 10; i+=1) { %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            Don Quixote &nbsp;&nbsp;&nbsp;&nbsp;
-            Size: 42 &nbsp;&nbsp;&nbsp;&nbsp;
-            30€
-            <button type="button" class="btn btn-danger">Rimuovi</button>
-            <button type="button" class="btn btn-success">Acquista</button>
-            <div class="image-parent">
-              <img src="img/b.webp" class="img-fluid" alt="quixote">
-            </div>
-          </li>
-          <% } %>
+            <%
+ 
+                int idSU = (int) session.getAttribute("idU");
+ 
+                Cookie[] ck = request.getCookies();
+ 
+                int nn = 0;
+ 
+                if (ck != null) {
+                    for (Cookie c : ck) {
+                        if (c.getName().equals("n")) {
+                            String n = c.getValue();
+                            nn = Integer.parseInt(n);
+                        }
+                    }
+                }
+ 
+                for (int i = 0; i <= nn; i++){
+ 
+                    Cookie[] cookies = request.getCookies();
+ 
+                    if (cookies != null) {
+                        for (Cookie cookie : cookies) {
+                            if (cookie.getName().equals(i+"")) {
+                                String str = cookie.getValue();
+                                String[] parts = str.split("!");
+                                String modello = parts[0];
+                                String size = parts[1];
+                                String prezzo = parts[2];
+                                String immagine = parts[3];
+                                String idU = parts[4];
+                                if (idSU == Integer.parseInt(idU)) {
+ 
+                %>
+ 
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <h6><%=modello%></h6>
+                        <h6>size:&nbsp;<%=size%></h6>
+                        <h6><%=prezzo%>&nbsp; €</h6>
+ 
+                        <button type="button" class="btn btn-danger">Rimuovi</button>
+                        <button type="button" class="btn btn-success">Acquista</button>
+ 
+                        <div class="image-parent">
+                            <img src=<%=immagine%> class="img-fluid" alt="quixote">
+                        </div>
+ 
+                    </li>
+ 
+                <%
+                                }
+                            }
+                        }
+                    }
+                }
+ 
+             %>
+ 
         </ul>
         <br>
         <button type="button" class="btn btn-danger">Rimuovi tutto</button>
@@ -133,7 +179,7 @@
     </div>
   </div>
 </main>
-
+ 
 <script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>
