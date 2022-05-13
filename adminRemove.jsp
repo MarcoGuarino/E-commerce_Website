@@ -76,10 +76,10 @@
             <label for="inputState1" class="form-label">Marca</label>
             <select id="inputState1" class="form-select" name="marca">
               <option selected>Scegli...</option>
-              <option>Nike</option>
-              <option>Adidas</option>
-              <option>Converse</option>
-              <option>New Balance</option>
+              <option>nike</option>
+              <option>adidas</option>
+              <option>newbalance</option>
+              <option>converse</option>
             </select>
           </div>
 
@@ -87,9 +87,9 @@
             <label for="inputState2" class="form-label">Uomo/Donna/Bambino</label>
             <select id="inputState2" class="form-select" name="uomo/donna/bambino">
               <option selected>Scegli...</option>
-              <option>Uomo</option>
-              <option>Donna</option>
-              <option>Bambino</option>
+              <option>uomo</option>
+              <option>donna</option>
+              <option>bambino</option>
             </select>
           </div>
 
@@ -97,10 +97,12 @@
             <label for="inputState3" class="form-label">Colore</label>
             <select id="inputState3" class="form-select" name="colore">
               <option selected>Scegli...</option>
-              <option>Rosso</option>
-              <option>Giallo</option>
-              <option>Nero</option>
-              <option>Bianco</option>
+             <option>nero</option>
+                           <option>bianco</option>
+                           <option>rosso</option>
+                           <option>grigio</option>
+                           <option>rosa</option>
+                           <option>rosso</option>
             </select>
           </div>
 

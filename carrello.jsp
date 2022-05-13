@@ -114,6 +114,11 @@
         <h1 class="fw-bold">Il tuo carrello</h1>
         <ul class="list-group">
             <%
+                String rm;
+                if(request.getParameter("modello")!= null)
+                {
+                    rm=request.getParameter("modello")+"!"+request.getParameter("size")+"!"+request.getParameter("prezzo")+"!"+request.getParameter("id_utente");
+                }
  
                 int idSU = (int) session.getAttribute("idU");
  
@@ -129,11 +134,12 @@
                         }
                     }
                 }
- 
+                int trovami=0;
+                int scorri=0;
                 for (int i = 0; i <= nn; i++){
  
                     Cookie[] cookies = request.getCookies();
- 
+                    
                     if (cookies != null) {
                         for (Cookie cookie : cookies) {
                             if (cookie.getName().equals(i+"")) {
@@ -144,6 +150,7 @@
                                 String prezzo = parts[2];
                                 String immagine = parts[3];
                                 String idU = parts[4];
+                                scorri=scorri+1;
                                 if (idSU == Integer.parseInt(idU)) {
  
                 %>
@@ -154,7 +161,7 @@
                         <h6><%=prezzo%>&nbsp; €</h6>
  
                         <button type="button" class="btn btn-danger">Rimuovi</button>
-                        <button type="button" class="btn btn-success">Acquista</button>
+                        <button type="submit" href="AcquistoServlet?modello=<%=modello%>&size=<%=size%>&prezzo=<%=prezzo%>&immagine=<%=immagine%>&id_utente<%=idU%>" class="btn btn-success">Acquista</button>
  
                         <div class="image-parent">
                             <img src=<%=immagine%> class="img-fluid" alt="quixote">
@@ -164,17 +171,23 @@
  
                 <%
                                 }
+                                
                             }
                         }
                     }
                 }
+               
  
              %>
+
  
         </ul>
         <br>
+        
         <button type="button" class="btn btn-danger">Rimuovi tutto</button>
-        <button type="button" class="btn btn-success">Acquista tutto</button>
+        <form  action="AcquistoServlet" method="post">
+        <button type="submit" class="btn btn-success">Acquista tutto</button>
+        </form>
       </div>
     </div>
   </div>

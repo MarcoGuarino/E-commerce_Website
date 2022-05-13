@@ -47,6 +47,7 @@
         <servlet-name>ScarpaServlet</servlet-name>
         <url-pattern>/ScarpaServlet</url-pattern>
     </servlet-mapping>
+
     <servlet>
         <servlet-name>CartServlet</servlet-name>
         <servlet-class>com.project.progetto.CartServlet</servlet-class>
@@ -55,4 +56,14 @@
         <servlet-name>CartServlet</servlet-name>
         <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AcquistoServlet</servlet-name>
+        <servlet-class>com.project.progetto.AcquistoServlet</servlet-class>
+    </servlet>
+        <servlet-mapping>
+        <servlet-name>AcquistoServlet</servlet-name>
+        <url-pattern>/AcquistoServlet</url-pattern>
+    </servlet-mapping>
+
 </web-app>

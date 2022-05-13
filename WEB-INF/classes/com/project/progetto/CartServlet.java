@@ -43,7 +43,7 @@ public class CartServlet extends HttpServlet {
         Cookie ck2 = new Cookie("n",c);
         count++;
         c = String.valueOf(count);
- 
+        
         response.addCookie(ck);
         response.addCookie(ck2);
  

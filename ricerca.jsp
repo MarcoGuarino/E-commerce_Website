@@ -122,15 +122,22 @@
               <%}%>
             </select>
           </div>
-
-          <%Object strGen = request.getParameter("uomo/donna/bambino");%>
+          <%Object strGenNav = request.getParameter("genere");
+          Object strGen = request.getParameter("uomo/donna/bambino");%>
           <div class="col-md-2">
             <label for="inputState2" class="form-label">Uomo/Donna/Bambino</label>
             <select id="inputState2" class="form-select" name="uomo/donna/bambino">
+              <%if (strGenNav != null){%>
+              <%if (strGenNav.equals("uomo"))%><option selected>uomo</option><%else%><option>uomo</option>
+              <%if (strGenNav.equals("donna"))%><option selected>donna</option><%else%><option>donna</option>
+              <%if (strGenNav.equals("bambino"))%><option selected>bambino</option><%else%><option>bambino</option>
+              <%}%>
+              <%if (strGenNav == null){%>
               <%if (strGen != null && strGen.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
               <%if (strGen != null && strGen.equals("uomo"))%><option selected>uomo</option><%else%><option>uomo</option>
               <%if (strGen != null && strGen.equals("donna"))%><option selected>donna</option><%else%><option>donna</option>
               <%if (strGen != null && strGen.equals("bambino"))%><option selected>bambino</option><%else%><option>bambino</option>
+              <%}%>
             </select>
           </div>
 
@@ -187,6 +194,7 @@
         <%
         Object marcanav = request.getParameter("marcanav"); //se la richiesta mi viene da ricerca.jsp allora questa è in null
         Object marca = request.getParameter("marca");
+        Object gen = request.getParameter("genere"); //genere se la richiesta viene da index.jsp
         Object udb = request.getParameter("uomo/donna/bambino");
         Object colore = request.getParameter("colore");
         Object min = request.getParameter("customRange1");
@@ -226,6 +234,10 @@
 
         if (marcanav != null){
           marca = marcanav;
+        }
+
+        if (gen != null){ //dalle img di index.jsp
+          udb = gen;
         }
 
         preparedStatement.setString(1, marca.toString());

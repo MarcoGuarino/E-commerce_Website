@@ -186,7 +186,7 @@
             </div>
             <div class="col-md-5">
                 <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-                    <image href="img/b.webp" height="500" width="500"></image>
+                    <a href="ricerca.jsp?genere=uomo" ><image href="img/modelliScarpe/uomo_scarpe.png" height="500" width="500"></image></a>
                 </svg>
 
             </div>
@@ -201,7 +201,7 @@
             </div>
             <div class="col-md-5 order-md-1">
                 <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-                    <image href="img/b.webp" height="500" width="500"></image>
+                    <a href="ricerca.jsp?genere=donna" ><image href="img/modelliScarpe/donna_scarpe.png" height="500" width="500"></image></a>
                 </svg>
             </div>
         </div>
@@ -215,7 +215,7 @@
             </div>
             <div class="col-md-5">
                 <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
-                    <image href="img/b.webp" height="500" width="500"></image>
+                    <a href="ricerca.jsp?genere=bambino" ><image href="img/modelliScarpe/bambino_scarpe.png" height="500" width="500"></image></a>
                 </svg>
             </div>
         </div>
