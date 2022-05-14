@@ -66,55 +66,83 @@
 </header>
 
 <main>
-<main>
   <section class="py-1 text-center container-fluid">
     <div class="row py-lg-1">
       <div class="col-lg-7 col-md-8 mx-auto">
-        <form class="row row-cols-5" style="margin-top:65px">
+        <form class="row row-cols-5" style="margin-top:65px" method="post" action="adminRemove.jsp">
 
+          <%Object strMarca = request.getParameter("marca");
+          Object strMarcanav = request.getParameter("marcanav");%>
+          
           <div class="col-md-2">
             <label for="inputState1" class="form-label">Marca</label>
             <select id="inputState1" class="form-select" name="marca">
-              <option selected>Scegli...</option>
-              <option>Nike</option>
-              <option>Adidas</option>
-              <option>Converse</option>
-              <option>New Balance</option>
+              <%if (strMarcanav != null){%>
+              <%if (strMarcanav.equals("nike"))%><option selected>nike</option><%else%><option>nike</option>
+              <%if (strMarcanav.equals("adidas"))%><option selected>adidas</option><%else%><option>adidas</option>
+              <%if (strMarcanav.equals("converse"))%><option selected>converse</option><%else%><option>converse</option>
+              <%if (strMarcanav.equals("new balance"))%><option selected>new balance</option><%else%><option>new balance</option>
+              <%}%>
+              <%if (strMarcanav == null){%>
+              <%if (strMarca != null && strMarca.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
+              <%if (strMarca != null && strMarca.equals("nike"))%><option selected>nike</option><%else%><option>nike</option>
+              <%if (strMarca != null && strMarca.equals("adidas"))%><option selected>adidas</option><%else%><option>adidas</option>
+              <%if (strMarca != null && strMarca.equals("converse"))%><option selected>converse</option><%else%><option>converse</option>
+              <%if (strMarca != null && strMarca.equals("new balance"))%><option selected>new balance</option><%else%><option>new balance</option>
+              <%}%>
             </select>
           </div>
-
+          <%Object strGenNav = request.getParameter("genere");
+          Object strGen = request.getParameter("uomo/donna/bambino");%>
           <div class="col-md-2">
             <label for="inputState2" class="form-label">Uomo/Donna/Bambino</label>
             <select id="inputState2" class="form-select" name="uomo/donna/bambino">
-              <option selected>Scegli...</option>
-              <option>Uomo</option>
-              <option>Donna</option>
-              <option>Bambino</option>
+              <%if (strGenNav != null){%>
+              <%if (strGenNav.equals("uomo"))%><option selected>uomo</option><%else%><option>uomo</option>
+              <%if (strGenNav.equals("donna"))%><option selected>donna</option><%else%><option>donna</option>
+              <%if (strGenNav.equals("bambino"))%><option selected>bambino</option><%else%><option>bambino</option>
+              <%}%>
+              <%if (strGenNav == null){%>
+              <%if (strGen != null && strGen.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
+              <%if (strGen != null && strGen.equals("uomo"))%><option selected>uomo</option><%else%><option>uomo</option>
+              <%if (strGen != null && strGen.equals("donna"))%><option selected>donna</option><%else%><option>donna</option>
+              <%if (strGen != null && strGen.equals("bambino"))%><option selected>bambino</option><%else%><option>bambino</option>
+              <%}%>
             </select>
           </div>
 
+          <%Object strCol = request.getParameter("colore");%>
           <div class="col-md-2">
             <label for="inputState3" class="form-label">Colore</label>
             <select id="inputState3" class="form-select" name="colore">
-              <option selected>Scegli...</option>
-              <option>Rosso</option>
-              <option>Giallo</option>
-              <option>Nero</option>
-              <option>Bianco</option>
+              <%if (strCol != null && strCol.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
+              <%if (strCol != null && strCol.equals("nero"))%><option selected>nero</option><%else%><option>nero</option>
+              <%if (strCol != null && strCol.equals("bianco"))%><option selected>bianco</option><%else%><option>bianco</option>
+              <%if (strCol != null && strCol.equals("grigio"))%><option selected>grigio</option><%else%><option>grigio</option>
+              <%if (strCol != null && strCol.equals("rosso"))%><option selected>rosso</option><%else%><option>rosso</option>
             </select>
           </div>
 
+          <%Object strCR1 = request.getParameter("customRange1");%>
           <div class="col-md-3">
             <label for="customRange1" class="form-label">Prezzo Minimo</label>
-            <input type="range" class="form-range" min="0" max="500" value="0" id="customRange1" oninput="this.nextElementSibling.value = this.value">
-            <output>0</output>
-
+            <%if (strCR1 != null){%>
+            <input type="range" class="form-range" name = "customRange1" min="0" max="350" value="<%=strCR1%>" id="customRange1" oninput="this.nextElementSibling.value = this.value">
+            <output><%=strCR1%></output><%}%>
+            <%if (strCR1 == null){%>
+            <input type="range" class="form-range" name = "customRange1" min="0" max="350" value="0" id="customRange1" oninput="this.nextElementSibling.value = this.value">            
+            <output>0</output><%}%>
           </div>
 
+          <%Object strCR2 = request.getParameter("customRange2");%>
           <div class="col-md-3">
             <label for="customRange2" class="form-label">Prezzo Massimo</label>
-            <input type="range" class="form-range" min="0" max="500" value="500" id="customRange2" oninput="this.nextElementSibling.value = this.value">
-            <output>500</output>
+            <%if (strCR2 != null){%>
+            <input type="range" class="form-range" name = "customRange2" min="0" max="350" value="<%=strCR2%>" id="customRange2" oninput="this.nextElementSibling.value = this.value">
+            <output><%=strCR2%></output><%}%>
+            <%if (strCR2 == null){%>
+            <input type="range" class="form-range" name = "customRange2" min="0" max="350" value="350" id="customRange2" oninput="this.nextElementSibling.value = this.value">
+            <output>350</output><%}%>
 
           </div>
           <div class="col-12">
@@ -132,24 +160,115 @@
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% for(int i = 0; i < 10; i+=1) { %>
+
+        <%
+        Object marcanav = request.getParameter("marcanav"); //se la richiesta mi viene da ricerca.jsp allora questa è in null
+        Object marca = request.getParameter("marca");
+        Object gen = request.getParameter("genere"); //genere se la richiesta viene da index.jsp
+        Object udb = request.getParameter("uomo/donna/bambino");
+        Object colore = request.getParameter("colore");
+        Object min = request.getParameter("customRange1");
+        Object max = request.getParameter("customRange2");
+        if (marca != null && marca.equals("Scegli...")){marca = "%";}
+        if (udb != null && udb.equals("Scegli...")){udb = "%";}
+        if (colore != null && colore.equals("Scegli...")){colore = "%";}
+        %>
+        <%@ page import="java.io.IOException"%>
+        <%@ page import="java.sql.*" %> 
+        <%@ page import="java.util.*" %>
+        <%   
+        try {
+        //Class.forName("org.mariadb.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+        throw new RuntimeException(e);
+        }
+        //String url = "jdbc:mariadb://localhost:3306/sneaka";
+        String url = "jdbc:mysql://localhost:3306/sneaka";
+        String user = "sneaka";
+        String password = "sneaka";
+
+        String SQL = "SELECT id,nome,genere,prezzo,prezzoOF,immagine,offerta FROM scarpa where marca like ? and genere like ? and colore like ? and ((prezzo>=? and prezzo<=?) or (prezzoOF>=? and prezzoOF<=?))";
+
+        Connection connection = DriverManager.getConnection(url,user,password);
+        
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+
+
+        if (marca == null){
+          marca="%";
+          udb="%";
+          colore="%";
+          min="0";
+          max="350";
+        }
+
+        if (marcanav != null){
+          marca = marcanav;
+        }
+
+        if (gen != null){ //dalle img di index.jsp
+          udb = gen;
+        }
+
+        preparedStatement.setString(1, marca.toString());
+        preparedStatement.setString(2, udb.toString());
+        preparedStatement.setString(3, colore.toString());
+        preparedStatement.setString(4, min.toString());
+        preparedStatement.setString(5, max.toString());
+        preparedStatement.setString(6, min.toString());
+        preparedStatement.setString(7, max.toString());
+
+
+
+        ResultSet result = preparedStatement.executeQuery();
+
+        ResultSetMetaData rsmd = result.getMetaData();
+        while (result.next()){
+            int id = Integer.parseInt(result.getString(1));
+            String modello = (String)(result.getString(2));
+            String genere = (String)(result.getString(3));
+            int prezzo = Integer.parseInt(result.getString(4));
+            String immagine = (String)(result.getString(6));
+            String offerta = (String)(result.getString(7));
+            int prezzoOF = Integer.parseInt(result.getString(4));
+            String r="RemoveServlet?pino=" + result.getString(1);
+            %>
         <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="200" height="200"
-                 xmlns="http://www.w3.org/2000/svg">
-              <image href="img/b.webp" height="200" width="200"></image>
-            </svg>
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                         <%if (offerta.equals("no"))%>
+                         <a><image href="<%=immagine%>" height="200" width="200"></image></a>
+                         <%if (offerta.equals("si")) prezzoOF = Integer.parseInt(result.getString(5));%>
+                         <a><image href="<%=immagine%>" height="200" width="200"></image></a>
+                        
+                </svg>
             <div class="card-body">
-              <p class="card-price">modello</p>
-              <p class="card-price">30€&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-danger">Rimuovi</button></p>
+                <form>
+                <p class="card-price"><%=modello%>&nbsp;&nbsp;&nbsp;&nbsp;<%=genere%></p>
+
+                 <p class="card-price"><button type="submit" formaction=<%=r%>  formmethod="post" class="btn btn-danger">Rimuovi</button></p>
+                 </form>
+                <%
+                if (offerta.equals("no")){%>
+                <p class="card-price"><%=prezzo%>€</p><%}%>
+                <%
+                if (offerta.equals("si")){ prezzoOF = Integer.parseInt(result.getString(5));%>
+                <p class="card-price"><del><%=prezzo%></del>€&nbsp;&nbsp;&nbsp;&nbsp;<%=prezzoOF%>€</p><%}%>
             </div>
           </div>
         </div>
         <% } %>
+
+
       </div>
     </div>
   </div>
+
 </main>
 
+<script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

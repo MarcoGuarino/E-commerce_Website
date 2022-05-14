@@ -112,14 +112,14 @@
                 <%@ page import="java.util.*" %>
                 <%
                 try {
-                Class.forName("org.mariadb.jdbc.Driver");
-                //Class.forName("com.mysql.jdbc.Driver");
+                //Class.forName("org.mariadb.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
                 }
 
-                String url = "jdbc:mariadb://localhost:3306/sneaka";
-                //String url = "jdbc:mysql://localhost:3306/sneaka";
+               // String url = "jdbc:mariadb://localhost:3306/sneaka";
+                String url = "jdbc:mysql://localhost:3306/sneaka";
                 String user = "sneaka";
                 String password = "sneaka";
 

@@ -12,10 +12,10 @@ public class UtenteDB {
         int result = 0;
 
         //Class.forName("org.mariadb.jdbc.Driver");
-        Class.forName("org.mariadb.jdbc.Driver");
+       Class.forName("com.mysql.jdbc.Driver");
 
-        String url = "jdbc:mariadb://localhost:3306/sneaka";
-        //String url = "jdbc:mysql://localhost:3306/sneaka";
+       // String url = "jdbc:mariadb://localhost:3306/sneaka";
+        String url = "jdbc:mysql://localhost:3306/sneaka";
         String user = "sneaka";
         String password = "sneaka";
 

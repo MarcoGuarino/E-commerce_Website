@@ -20,11 +20,51 @@ public class AcquistoServlet extends HttpServlet {
             throws IOException {
         HttpSession session = request.getSession(false);
         int idSU = (int) session.getAttribute("idU");
+        String c = request.getParameter("c");
 
         ServletContext context = getServletContext();
         int cartItems = (int) context.getAttribute("cartItems");
 
         Cookie[] cookies = request.getCookies();
+
+        if(c!=null){ //acquisto singolo
+
+            
+
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(c)) {
+                    String str = cookie.getValue();
+                        String[] parts = str.split("!");
+                        String modello = parts[0];
+                        String size = parts[1];
+                        String prezzo = parts[2];
+                        String immagine = parts[3];
+                        String idU = parts[4];
+                        Acquisto acquisto = new Acquisto();
+                        acquisto.setID_utente(Integer.parseInt(idU));
+                        acquisto.setN_scarpa(Integer.parseInt(size));
+                        acquisto.setNome(modello);
+
+
+                        try {
+                            acquistoDB.inserisciAcquisto(acquisto);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+
+
+                    cookie.setValue(null);
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+        }
+
+        }
+
+
+else{
 
         if (cookies != null) {
             for (int i = 0; i <= cartItems; i++) {
@@ -63,6 +103,7 @@ public class AcquistoServlet extends HttpServlet {
                 }
             }
         }
+     }//aquista tutto
         response.sendRedirect("carrello.jsp");
     }
 }

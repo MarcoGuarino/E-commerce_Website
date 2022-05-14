@@ -2,51 +2,30 @@ package com.project.progetto;
 
 import java.sql.*;
 
-public class ScarpaDB {
-
-    public int inserisciScarpa(Scarpa scarpa) throws ClassNotFoundException {
-
-        String SQL;
+public class RemoveDB {
+    public int eliminaArticolo(Remove remove) throws ClassNotFoundException {
+    
         
-        if (scarpa.getOfferta().equals("si")){
-            SQL = "INSERT INTO scarpa" +
-            "  (marca, nome, colore, genere, prezzo, offerta, immagine, prezzoOF) VALUES " +
-            " (?, ?, ?, ?, ?, ?, ?, ?);";
-        }
-        else{
-            
-            SQL = "INSERT INTO scarpa" +
-            "  (marca, nome, colore, genere, prezzo, offerta, immagine) VALUES " +
-            " (?, ?, ?, ?, ?, ?, ?);";
-        }
-
+       
         int result = 0;
 
-        Class.forName("com.mysql.jdbc.Driver");
         //Class.forName("org.mariadb.jdbc.Driver");
+       Class.forName("com.mysql.jdbc.Driver");
 
-        //String url = "jdbc:mariadb://localhost:3306/sneaka";
+       // String url = "jdbc:mariadb://localhost:3306/sneaka";
         String url = "jdbc:mysql://localhost:3306/sneaka";
         String user = "sneaka";
         String password = "sneaka";
 
+       
+        String SQL = "delete from scarpa where id = ?";
+
         try (Connection connection = DriverManager
                 .getConnection(url, user, password);
 
-
              PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
-
-            preparedStatement.setString(1, scarpa.getMarca());
-            preparedStatement.setString(2, scarpa.getNome());
-            preparedStatement.setString(3, scarpa.getColore());
-            preparedStatement.setString(4, scarpa.getGenere());
-            preparedStatement.setInt(5, scarpa.getPrezzo());
-            preparedStatement.setString(6, scarpa.getOfferta());
-            preparedStatement.setString(7, scarpa.getImmagine());
-            if (scarpa.getOfferta().equals("si")){
-                preparedStatement.setInt(8, scarpa.getPrezzoOF());
-            }
-
+            preparedStatement.setInt(1, remove.getID());
+            
 
             System.out.println(preparedStatement);
 
@@ -73,5 +52,12 @@ public class ScarpaDB {
                 }
             }
         }
-    }
+
+
+      
+
+
+
+    
+                                                                               }
 }

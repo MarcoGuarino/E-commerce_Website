@@ -150,7 +150,7 @@
 
                                         <%
                                             String urlRemove = "RemoveCartServlet?c=" + coo;
-                                            String urlBuy = "carrello.jsp?c=" + coo;
+                                            String urlBuy = "AcquistoServlet?c=" + coo;
                                         %>
 
                                         <button class="w-10 btn btn-lg btn-danger" type="submit" formaction=<%=urlRemove%> formmethod="post">Rimuovi</button>

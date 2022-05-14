@@ -79,4 +79,13 @@
         <servlet-name>AcquistoServlet</servlet-name>
         <url-pattern>/AcquistoServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RemoveServlet</servlet-name>
+        <servlet-class>com.project.progetto.RemoveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RemoveServlet</servlet-name>
+        <url-pattern>/RemoveServlet</url-pattern>
+    </servlet-mapping>
 </web-app>
