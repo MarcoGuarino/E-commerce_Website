@@ -19,10 +19,13 @@ public class RemoveServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
 
-                                  String tedua = request.getParameter("pino");
+
+
+                                  String tedua = request.getParameter("pino"); //id scarpa
+
 
                                   Remove izi = new Remove();
-                                  izi.setID(Integer.parseInt(tedua));
+                                  izi.setID(Integer.parseInt(tedua)); //rimuoviamo scarpa con id tedua
                                   
           
           
@@ -32,7 +35,7 @@ public class RemoveServlet extends HttpServlet {
                                       throw new RuntimeException(e);
                                   }
 
-                                  response.sendRedirect("adminRemove.jsp?genere=bambino");
+                                  response.sendRedirect("adminRemove.jsp?marcaserv=" + request.getParameter("marca") + "&genereserv=" + request.getParameter("udb") + "&coloreserv=" + request.getParameter("colore") + "&customRange1serv=" + request.getParameter("min") + "&customRange2serv=" + request.getParameter("max"));
     
                                }
 

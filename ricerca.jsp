@@ -108,6 +108,7 @@
             <label for="inputState1" class="form-label">Marca</label>
             <select id="inputState1" class="form-select" name="marca">
               <%if (strMarcanav != null){%>
+              <%if (strMarcanav.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
               <%if (strMarcanav.equals("nike"))%><option selected>nike</option><%else%><option>nike</option>
               <%if (strMarcanav.equals("adidas"))%><option selected>adidas</option><%else%><option>adidas</option>
               <%if (strMarcanav.equals("converse"))%><option selected>converse</option><%else%><option>converse</option>
@@ -128,6 +129,7 @@
             <label for="inputState2" class="form-label">Uomo/Donna/Bambino</label>
             <select id="inputState2" class="form-select" name="uomo/donna/bambino">
               <%if (strGenNav != null){%>
+              <%if (strGenNav.equals("Scegli"))%><option selected>Scegli...</option><%else%><option>Scegli...</option>
               <%if (strGenNav.equals("uomo"))%><option selected>uomo</option><%else%><option>uomo</option>
               <%if (strGenNav.equals("donna"))%><option selected>donna</option><%else%><option>donna</option>
               <%if (strGenNav.equals("bambino"))%><option selected>bambino</option><%else%><option>bambino</option>

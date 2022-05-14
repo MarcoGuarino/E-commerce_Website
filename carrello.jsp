@@ -175,10 +175,12 @@
             </ul>
             <br>
 
+            <%if(!isEmpty){%>
               <form>
                 <button class="w-10 btn btn-lg btn-danger" type="submit" formaction="RemoveAllCartServlet" formmethod="post">Rimuovi Tutto</button>
                 <button class="w-10 btn btn-lg btn-success" type="submit" formaction="AcquistoServlet" formmethod="post">Acquista Tutto</button>
               </form>
+            <%}%>
 
       </div>
     </div>
