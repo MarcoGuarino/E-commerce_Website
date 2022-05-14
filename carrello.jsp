@@ -114,35 +114,23 @@
         <h1 class="fw-bold">Il tuo carrello</h1>
         <ul class="list-group">
             <%
-                String rm;
-                if(request.getParameter("modello")!= null)
-                {
-                    rm=request.getParameter("modello")+"!"+request.getParameter("size")+"!"+request.getParameter("prezzo")+"!"+request.getParameter("id_utente");
-                }
- 
+
                 int idSU = (int) session.getAttribute("idU");
- 
-                Cookie[] ck = request.getCookies();
- 
-                int nn = 0;
- 
-                if (ck != null) {
-                    for (Cookie c : ck) {
-                        if (c.getName().equals("n")) {
-                            String n = c.getValue();
-                            nn = Integer.parseInt(n);
-                        }
-                    }
-                }
-                int trovami=0;
-                int scorri=0;
-                for (int i = 0; i <= nn; i++){
- 
-                    Cookie[] cookies = request.getCookies();
-                    
-                    if (cookies != null) {
+
+
+                ServletContext context = request.getServletContext();
+                Integer cartItems = (Integer) context.getAttribute("cartItems");
+
+
+                Cookie[] cookies = request.getCookies();
+
+                boolean isEmpty = true;
+
+                if (cookies != null & cartItems != null) {
+                    for (int i = 0; i <= cartItems; i++){
                         for (Cookie cookie : cookies) {
                             if (cookie.getName().equals(i+"")) {
+                                String coo = cookie.getName();
                                 String str = cookie.getValue();
                                 String[] parts = str.split("!");
                                 String modello = parts[0];
@@ -150,44 +138,48 @@
                                 String prezzo = parts[2];
                                 String immagine = parts[3];
                                 String idU = parts[4];
-                                scorri=scorri+1;
                                 if (idSU == Integer.parseInt(idU)) {
- 
-                %>
- 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <h6><%=modello%></h6>
-                        <h6>size:&nbsp;<%=size%></h6>
-                        <h6><%=prezzo%>&nbsp; €</h6>
- 
-                        <button type="button" class="btn btn-danger">Rimuovi</button>
-                        <button type="submit" href="AcquistoServlet?modello=<%=modello%>&size=<%=size%>&prezzo=<%=prezzo%>&immagine=<%=immagine%>&id_utente<%=idU%>" class="btn btn-success">Acquista</button>
- 
-                        <div class="image-parent">
-                            <img src=<%=immagine%> class="img-fluid" alt="quixote">
-                        </div>
- 
-                    </li>
- 
-                <%
-                                }
-                                
-                            }
-                        }
-                    }
-                }
-               
- 
-             %>
+                                    isEmpty = false;
 
- 
-        </ul>
-        <br>
-        
-        <button type="button" class="btn btn-danger">Rimuovi tutto</button>
-        <form  action="AcquistoServlet" method="post">
-        <button type="submit" class="btn btn-success">Acquista tutto</button>
-        </form>
+            %>
+                                <form>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <h6><%=modello%></h6>
+                                        <h6>size:  <%=size%></h6>
+                                        <h6><%=prezzo%>  €</h6>
+
+                                        <%
+                                            String urlRemove = "RemoveCartServlet?c=" + coo;
+                                            String urlBuy = "carrello.jsp?c=" + coo;
+                                        %>
+
+                                        <button class="w-10 btn btn-lg btn-danger" type="submit" formaction=<%=urlRemove%> formmethod="post">Rimuovi</button>
+                                        <button class="w-10 btn btn-lg btn-success" type="submit" formaction=<%=urlBuy%> formmethod="post">Acquista</button>
+
+                                        <div class="image-parent">
+                                            <img src=<%=immagine%> class="img-fluid" alt="quixote">
+                                        </div>
+
+                                    </li>
+                                </form>
+
+                         <%
+                                    }
+                                }
+                            }
+                        }  if (isEmpty) { %> <h1>the cart is empty</h1> <% }
+                } else { %> <h1>the cart is empty</h1> <% }
+
+                         %>
+
+            </ul>
+            <br>
+
+              <form>
+                <button class="w-10 btn btn-lg btn-danger" type="submit" formaction="RemoveAllCartServlet" formmethod="post">Rimuovi Tutto</button>
+                <button class="w-10 btn btn-lg btn-success" type="submit" formaction="AcquistoServlet" formmethod="post">Acquista Tutto</button>
+              </form>
+
       </div>
     </div>
   </div>

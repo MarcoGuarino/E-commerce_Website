@@ -98,8 +98,6 @@
                            <option>bianco</option>
                            <option>rosso</option>
                            <option>grigio</option>
-                           <option>rosa</option>
-                           <option>rosso</option>
                            </select>
                         </div>
 
