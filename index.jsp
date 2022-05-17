@@ -81,6 +81,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acquistate.jsp"><i class="bi bi-star fs-4 mb-3"></i></a>
+                    </li>
                     <%}%>
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
@@ -143,8 +146,9 @@
 
     <div class="container marketing">
 
-
         <div class="row">
+            <%
+            if (session.getAttribute("msg") != null){%>
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
                      xmlns="http://www.w3.org/2000/svg">
@@ -154,6 +158,20 @@
                 <p>In base ai tuoi acquisti</p>
                 <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
             </div>
+            <%}%>
+
+            <%
+            if (session.getAttribute("msg") == null){%>
+            <div class="col-lg-4">
+                <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <image href="img/dito.jpg" height="200" width="200"></image>
+                </svg>
+                <p>esegui il login &nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="login.jsp">Premi&raquo;</a></p>
+                <p>esegui la registrazione &nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="signup.jsp">Premi&raquo;</a></p>
+            </div>
+            <%}%>
+
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
                      xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +179,7 @@
                 </svg>
                 <h2>La scarpa piu acquistata</h2>
                 <p>Per chi vuole essere sempre alla moda</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="#">Dettagli &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
@@ -171,8 +189,9 @@
 
                 <h2>La scarpa del giorno</h2>
                 <p>Per chi vuole provare qualcosa di nuovo</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="#">Dettagli&raquo;</a></p>
             </div>
+
         </div>
 
 
@@ -182,7 +201,6 @@
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Scarpe da uomo</h2>
-                <p class="lead">blblblbblblasdasdsad</p>
             </div>
             <div class="col-md-5">
                 <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
@@ -197,7 +215,6 @@
         <div class="row featurette">
             <div class="col-md-7 order-md-2">
                 <h2 class="featurette-heading">Scarpe da donna</h2>
-                <p class="lead">blblblbblblasdasdsad</p>
             </div>
             <div class="col-md-5 order-md-1">
                 <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg">
@@ -211,7 +228,6 @@
         <div class="row featurette">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Scarpe da bambino</h2>
-                <p class="lead">blblblbblblasdasdsad</p>
             </div>
             <div class="col-md-5">
                 <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg">

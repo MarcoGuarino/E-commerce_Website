@@ -84,7 +84,7 @@
               <%if (strMarcaServ.equals("nike"))%><option selected>nike</option><%else%><option>nike</option>
               <%if (strMarcaServ.equals("adidas"))%><option selected>adidas</option><%else%><option>adidas</option>
               <%if (strMarcaServ.equals("converse"))%><option selected>converse</option><%else%><option>converse</option>
-              <%if (strMarcaServ.equals("new balance"))%><option selected>new balance</option><%else%><option>new balance</option>
+              <%if (strMarcaServ.equals("new_balance"))%><option selected>new balance</option><%else%><option>new balance</option>
               <%}%>
               
               <%if (strMarcaServ == null){%>
@@ -208,9 +208,10 @@
         Object coloreserv = request.getParameter("coloreserv");
         Object minserv = request.getParameter("customRange1serv");
         Object maxserv = request.getParameter("customRange2serv");
-        if (marcaserv != null && marcaserv.equals("Scegli...")){marcaserv = "%";}
-        if (udbserv != null && udbserv.equals("Scegli...")){udbserv = "%";}
-        if (coloreserv != null && coloreserv.equals("Scegli...")){coloreserv = "%";}
+        Object ver= request.getParameter("guarino");
+        if (marcaserv != null && marcaserv.equals("null")){marcaserv = "%";}
+        if (udbserv != null && udbserv.equals("null")){udbserv = "%";}
+        if (coloreserv != null && coloreserv.equals("null")){coloreserv = "%";}
         %>
         <%@ page import="java.io.IOException"%>
         <%@ page import="java.sql.*" %> 
@@ -290,8 +291,24 @@
             String immagine = (String)(result.getString(6));
             String offerta = (String)(result.getString(7));
             int prezzoOF = Integer.parseInt(result.getString(4));
-            String r="RemoveServlet?marca="+String.valueOf(marca)+"&udb="+String.valueOf(udb)+"&colore="+String.valueOf(colore)+"&min="+String.valueOf(min)+"&max="+String.valueOf(max)+"&pino="+ result.getString(1);
-            %>
+            String noyz;
+            
+            String verifica=String.valueOf(ver);
+            String r;
+            if(verifica.equals("gem"))
+            {                   noyz=String.valueOf(marcaserv);
+                             if(noyz.equals("new balance")){  noyz="new_balance";}
+                                r="RemoveServlet?marca="+noyz+"&udb="+String.valueOf(udbserv)+"&colore="+String.valueOf(coloreserv)+"&min="+String.valueOf(minserv)+"&max="+String.valueOf(maxserv)+"&pino="+ result.getString(1);
+           
+            }
+            else
+            {
+                             noyz=String.valueOf(marca);
+                             if(noyz.equals("new balance")){  noyz="new_balance";}
+                           r="RemoveServlet?marca="+noyz+"&udb="+String.valueOf(udb)+"&colore="+String.valueOf(colore)+"&min="+String.valueOf(min)+"&max="+String.valueOf(max)+"&pino="+ result.getString(1);
+           
+            }
+  %>
         <div class="col">
             <div class="card shadow-sm">
                 <svg class="bd-placeholder-img card-img-top" width="200" height="200"

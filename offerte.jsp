@@ -23,10 +23,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="offerte.jsp">Offerte</a>
+                        <a class="nav-link" href="offerte.jsp">Offerte</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -77,6 +77,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acquistate.jsp"><i class="bi bi-star fs-4 mb-3"></i></a>
+                    </li>
                     <%}%>
                     <% Object value_ad = session.getAttribute("admin");
                         if (value_ad == "yes") {%>
@@ -123,7 +126,7 @@
                 String user = "sneaka";
                 String password = "sneaka";
 
-                String SQL = "SELECT id,nome,genere,prezzo,prezzoOF,immagine FROM scarpa where offerta=?";
+                String SQL = "SELECT id,nome,genere,prezzo,prezzoOF,immagine,colore FROM scarpa where offerta=?";
 
                 Connection connection = DriverManager.getConnection(url, user, password);
 
@@ -140,12 +143,13 @@
                 int prezzo = Integer.parseInt(result.getString(4));
                 int prezzoOF = Integer.parseInt(result.getString(5));
                 String immagine = (String)(result.getString(6));
+                String colore = (String)(result.getString(7));
                 %>
                 <div class="col">
                     <div class="card shadow-sm">
                         <svg class="bd-placeholder-img card-img-top" width="200" height="200"
                              xmlns="http://www.w3.org/2000/svg">
-                            <a href="buy.jsp?modello=<%=modello%>&genere=<%=genere%>&prezzo=<%=prezzoOF%>&immagine=<%=immagine%>"><image href="<%=immagine%>" height="200" width="200"></image></a>
+                            <a href="buy.jsp?modello=<%=modello%>&genere=<%=genere%>&colore=<%=colore%>&prezzo=<%=prezzoOF%>&immagine=<%=immagine%>"><image href="<%=immagine%>" height="200" width="200"></image></a>
                         </svg>
                         <div class="card-body">
                             <p class="card-price"><%=modello%>&nbsp;&nbsp;&nbsp;&nbsp;<%=genere%></p>

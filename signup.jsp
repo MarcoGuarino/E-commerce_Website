@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="offerte.jsp">Offerte</a>
@@ -74,12 +74,15 @@
                         }
                     %>
                     <li class="nav-item">
-                        <a class="nav-link active" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
+                        <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
                     <% Object value_us = session.getAttribute("admin");
                         if (value_us == "no") {%>
                     <li class="nav-item">
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acquistate.jsp"><i class="bi bi-star fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% Object value_ad = session.getAttribute("admin");
@@ -149,7 +152,7 @@
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label">Premium</label>
+                            <label class="form-label">Vuoi essere un utente premium?</label>
                             <select class="form-control" name="premium">
                             <option selected>si</option>
                             <option>no</option>

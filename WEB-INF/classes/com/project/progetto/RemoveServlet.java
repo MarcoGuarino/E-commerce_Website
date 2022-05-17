@@ -34,8 +34,9 @@ public class RemoveServlet extends HttpServlet {
                                   } catch (ClassNotFoundException e) {
                                       throw new RuntimeException(e);
                                   }
+                                 
 
-                                  response.sendRedirect("adminRemove.jsp?marcaserv=" + request.getParameter("marca") + "&genereserv=" + request.getParameter("udb") + "&coloreserv=" + request.getParameter("colore") + "&customRange1serv=" + request.getParameter("min") + "&customRange2serv=" + request.getParameter("max"));
+                                  response.sendRedirect("adminRemove.jsp?marcaserv=" + request.getParameter("marca") + "&genereserv=" + request.getParameter("udb") + "&coloreserv=" + request.getParameter("colore") + "&customRange1serv=" + request.getParameter("min") + "&customRange2serv=" + request.getParameter("max")+"&guarino="+"gem");
     
                                }
 

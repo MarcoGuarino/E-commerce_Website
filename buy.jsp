@@ -23,7 +23,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
+                        <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="offerte.jsp">Offerte</a>
@@ -43,7 +43,7 @@
                         <a class="nav-link" href="ricerca.jsp"><i class="bi bi-search"></i></a>
                     </li>
                 </ul>
- 
+
                 <ul class="nav navbar-nav ml-auto">
                     <!--
                         <li class="nav-item">
@@ -60,7 +60,7 @@
                             <%}%>
                         </a>
                     </li>
- 
+
                     <%
                         String dest;
                         if (valuemsg == null)
@@ -76,6 +76,9 @@
                         if (value_us == "no") {%>
                     <li class="nav-item">
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="acquistate.jsp"><i class="bi bi-star fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% Object value_ad = session.getAttribute("admin");
@@ -101,6 +104,7 @@
       String prezzo2 = request.getParameter("prezzo");
       int prezzo = Integer.parseInt(request.getParameter("prezzo"));
       String immagine = request.getParameter("immagine");
+      String colore = request.getParameter("colore");
       %>
   <div class="container">
     <div class="row">
@@ -123,16 +127,32 @@
             <h4>Size: &nbsp; &nbsp;</h4>
             <form>
                 <div class="col-md-4">
-                    <label for="size" class="form-label">Size</label>
                     <select class="form-select" id="size" name="size" required>
+                        <%if (genere.equals("bambino") || genere.equals("donna")){%>
                         <option value="">Choose...</option>
+                        <option>33</option>
+                        <option>34</option>
+                        <option>35</option>
+                        <option>36</option>
                         <option selected>37</option>
                         <option>38</option>
                         <option>39</option>
                         <option>40</option>
                         <option>41</option>
-                        <option>42</option>
+                        <%}%>
+                        <%if (genere.equals("uomo")){%>
+                        <option value="">Choose...</option>
+                        <option selected>38</option>
+                        <option>39</option>
+                        <option>40</option>
+                        <option>41</option>
+                        <option selected>42</option>
                         <option>43</option>
+                        <option>44</option>
+                        <option>45</option>
+                        <option>46</option>
+                        <option>47</option>
+                        <%}%>
                     </select>
                     <div class="invalid-feedback">
                         Please choose a size.
@@ -162,62 +182,91 @@
  
   <div class="container">
     <br/>
-    <div class="row mt-5">
-      <h2>Prodotti simili</h2>
-    </div>
- 
     <div class="row mt-2">
+                <%@ page import="java.io.IOException"%>
+                <%@ page import="java.sql.*" %> 
+                <%@ page import="java.util.*" %>
+                <%
+                try {
+                //Class.forName("org.mariadb.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
+                } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+                }
+
+               // String url = "jdbc:mariadb://localhost:3306/sneaka";
+                String url = "jdbc:mysql://localhost:3306/sneaka";
+                String user = "sneaka";
+                String password = "sneaka";
+
+                String SQL = "SELECT id,nome,genere,prezzo,prezzoOF,immagine,offerta,colore FROM scarpa where genere like ? and colore like ? and ((prezzo>=? and prezzo<=?) or (prezzoOF>=? and prezzoOF<=?))";
+
+                Connection connection = DriverManager.getConnection(url, user, password);
+
+                PreparedStatement preparedStatement = connection.prepareStatement(SQL, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+                preparedStatement.setString(1, genere.toString());
+                preparedStatement.setString(2, colore.toString());
+                preparedStatement.setString(3, String.valueOf(prezzo-40));
+                preparedStatement.setString(4, String.valueOf(prezzo+40));
+                preparedStatement.setString(5, String.valueOf(prezzo-40));
+                preparedStatement.setString(6, String.valueOf(prezzo+40));
+                ResultSet result = preparedStatement.executeQuery();
+
+                int lung_query = 0;
+
+                if (result != null) {
+                result.last();    // moves cursor to the last row
+                lung_query = result.getRow(); // get row id 
+                result.beforeFirst();
+                }
+                int j = 4;
+                if (lung_query < 4) j = lung_query; 
+                if (lung_query > 1){%>
+                    <div class="row mt-5">
+                    <h2>Prodotti simili</h2>
+                    </div>
+                <%}%>
+                <%
+                ResultSetMetaData rsmd = result.getMetaData();
+                int jj = 0;
+                while (result.next() && jj < j){
+                int idcon = Integer.parseInt(result.getString(1));
+                String modellocon = (String)(result.getString(2));
+                if (modello.equals(modellocon)){
+                  continue;
+                }
+                jj = jj + 1;
+                String generecon = (String)(result.getString(3));
+                int prezzocon = Integer.parseInt(result.getString(4));
+                int prezzoOFcon = Integer.parseInt(result.getString(4));
+                String immaginecon = (String)(result.getString(6));
+                String offertacon = (String)(result.getString(7));
+                String colorecon = (String)(result.getString(8));
+                %>
       <div class="col-md-3">
         <div class="card">
-          <img class="card-img-top img-fluid" src="img/b.webp">
+          <img class="card-img-top img-fluid" src="<%=immaginecon%>">
           <div class="card-title">
-            <h4>GYM Tops</h4>
+            <%
+            if (offertacon.equals("si")){%> 
+            <h4><%=modellocon%>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;<%=prezzoOFcon%>€</h4><%}%>
+            <%
+            if (offertacon.equals("no")){%> 
+            <h4><%=modellocon%>&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;<%=prezzocon%>€</h4><%}%>
           </div>
           <div class="card-text">
-            <a  class="btn btn-secondary text-light" href="buy.jsp"> Details</a> &nbsp;<br/><br/>
+            <%
+            if (offertacon.equals("si")){%> 
+            <a  class="btn btn-secondary text-light" href="buy.jsp?modello=<%=modellocon%>&genere=<%=generecon%>&colore=<%=colorecon%>&prezzo=<%=prezzoOFcon%>&immagine=<%=immaginecon%>">Guarda</a> &nbsp;<br/><br/><%}%>
+            <%
+            if (offertacon.equals("no")){%> 
+            <a  class="btn btn-secondary text-light" href="buy.jsp?modello=<%=modellocon%>&genere=<%=generecon%>&colore=<%=colorecon%>&prezzo=<%=prezzocon%>&immagine=<%=immaginecon%>">Guarda</a> &nbsp;<br/><br/><%}%>
           </div>
         </div>
       </div>
- 
- 
-      <div class="col-md-3">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="img/b.webp">
-          <div class="card-title">
-            <h4>GYM Tops</h4>
-          </div>
-          <div class="card-text">
-            <a  class="btn btn-secondary text-light" href="buy.jsp"> Details</a> &nbsp;<br/><br/>
-          </div>
-        </div>
-      </div>
- 
- 
-      <div class="col-md-3">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="img/b.webp">
-          <div class="card-title">
-            <h4>GYM Tops</h4>
-          </div>
-          <div class="card-text">
-            <a  class="btn btn-secondary text-light" href="buy.jsp"> Details</a> &nbsp;<br/><br/>
-          </div>
-        </div>
-      </div>
- 
-      <div class="col-md-3">
-        <div class="card">
-          <img class="card-img-top img-fluid" src="img/b.webp">
-          <div class="card-title">
-            <h4>GYM Tops</h4>
-          </div>
-          <div class="card-text">
-            <a  class="btn btn-secondary text-light" href="buy.jsp"> Details</a> &nbsp;<br/><br/>
-          </div>
- 
-        </div>
-      </div>
-    </div>
+                <%}%>
+  </div>
   </div>
  
  
