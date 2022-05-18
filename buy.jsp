@@ -142,11 +142,11 @@
                         <%}%>
                         <%if (genere.equals("uomo")){%>
                         <option value="">Choose...</option>
-                        <option selected>38</option>
+                        <option>38</option>
                         <option>39</option>
                         <option>40</option>
                         <option>41</option>
-                        <option selected>42</option>
+                        <option>42</option>
                         <option>43</option>
                         <option>44</option>
                         <option>45</option>
@@ -168,7 +168,7 @@
  
                 <br>
  
-                <button class="w-10 btn btn-lg btn-success" type="submit" formaction=<%=destin%> formmethod="post">buy</button>
+                <button class="w-10 btn btn-lg btn-success" type="submit" formaction="AcquistoServlet?mm=<%=modello%>&n=45&marra=dubbi" formmethod="post">Buy</button>
                 <button class="w-10 btn btn-lg btn-primary" type="submit" formaction=<%=destin2%> formmethod="post">cart</button>
  
           </div>

@@ -21,13 +21,39 @@ public class AcquistoServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         int idSU = (int) session.getAttribute("idU");
         String c = request.getParameter("c");
-
+        int cartItems=0;
         ServletContext context = getServletContext();
-        int cartItems = (int) context.getAttribute("cartItems");
-
+        Object app=context.getAttribute("cartItems");
+        
+        if(app!=null){
+         cartItems = (int) context.getAttribute("cartItems");
+        }
         Cookie[] cookies = request.getCookies();
 
-        if(c!=null){ //acquisto singolo
+        String fibra=request.getParameter("marra");
+
+        if(fibra!=null)//acquisto diretto
+        {
+            String monello=request.getParameter("mm");
+            int ss = Integer.parseInt(request.getParameter("size"));
+          
+            Acquisto acquisto = new Acquisto();
+                        acquisto.setID_utente(idSU);
+                        acquisto.setN_scarpa(ss);
+                        acquisto.setNome(monello);
+
+
+                        try {
+                            acquistoDB.inserisciAcquisto(acquisto);
+                        } catch (ClassNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                        
+            
+
+        }
+        
+        if(c!=null && fibra==null){ //acquisto singolo
 
             
 
@@ -64,7 +90,7 @@ public class AcquistoServlet extends HttpServlet {
         }
 
 
-else{
+else if(fibra==null && c==null){
 
         if (cookies != null) {
             for (int i = 0; i <= cartItems; i++) {
@@ -104,7 +130,8 @@ else{
             }
         }
      }//aquista tutto
-        response.sendRedirect("carrello.jsp");
+       
+        response.sendRedirect("acquistate.jsp");
     }
 }
   
