@@ -29,7 +29,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
+                        <a class="nav-link" aria-current="page" href="index.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="offerte.jsp">Offerte</a>
@@ -84,7 +84,7 @@
                         <a class="nav-link" href="carrello.jsp"><i class="bi bi-cart fs-4 mb-3"></i></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="acquistate.jsp"><i class="bi bi-star fs-4 mb-3"></i></a>
+                        <a class="nav-link active" href="acquistate.jsp"><i class="bi bi-star fs-4 mb-3"></i></a>
                     </li>
                     <%}%>
                     <% Object value_ad = session.getAttribute("admin");
@@ -173,31 +173,34 @@
                 ResultSetMetaData rsmd1 = result1.getMetaData();
                 int conta=0;
                 int voto=0;
-                if (!result1.isBeforeFirst()){
+                if (!result1.next()){
                     conta = 0;
                 } 
                 else {
                     conta = 1;
-                    voto = Integer.parseInt(result.getString(2));
+                    voto = Integer.parseInt(result1.getString(2));
                     }
                 if (conta == 0){%>
-                                <form>
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        <h3><%=nomiscarpe.get(i)%></h3>
-                                        <select class="form-container" style="width:100px;" name="voto" required>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option selected>4</option>
-                                        <option>5</option>
-                                        </select>
-                                        <button class="w-10 btn btn-lg btn-success pull-left" type="submit" formaction="index.jsp" formmethod="post">Vota</button>
-                                        <div class="image-parent">
-                                            <img src=<%=immaginiscarpe.get(i)%> class="img-fluid" alt="quixote">
-                                        </div>
-                                    </li>
-                                    
-                                </form>
+                    <form>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <h3><%=nomiscarpe.get(i)%></h3>
+                            <select class="form-container" style="width:100px;" name="voto" required>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option selected>4</option>
+                            <option>5</option>
+                            </select>
+                            <%
+                                String urlVote = "VotaServlet?scarpa=" + nomiscarpe.get(i) + "&idU=" + idSU;
+                            %>
+                            <button class="w-10 btn btn-lg btn-success pull-left" type="submit" formaction=<%=urlVote%> formmethod="post">Vota</button>
+                            <div class="image-parent">
+                                <img src=<%=immaginiscarpe.get(i)%> class="img-fluid" alt="quixote">
+                            </div>
+                        </li>
+
+                    </form>
                 <%}%>
                 <%if (conta != 0){%>
                         <form>

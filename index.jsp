@@ -178,18 +178,18 @@
                     <image href="img/b.webp" height="200" width="200"></image>
                 </svg>
                 <h2>La scarpa piu acquistata</h2>
-                <p>Per chi vuole essere sempre alla moda</p>
+                <p>La pi&ugrave; acquistata nel nostro e-commerce</p>
                 <p><a class="btn btn-secondary" href="#">Dettagli &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
                      xmlns="http://www.w3.org/2000/svg">
-                    <image href="img/b.webp" height="200" width="200"></image>
+                    <image href="img/pint.png" height="200" width="200"></image>
                 </svg>
 
-                <h2>La scarpa del giorno</h2>
-                <p>Per chi vuole provare qualcosa di nuovo</p>
-                <p><a class="btn btn-secondary" href="#">Dettagli&raquo;</a></p>
+                <h2>Sorprendimi</h2>
+                <p>&nbsp;</p> 
+                <p><a class="btn btn-secondary" href="#">Scopri&raquo;</a></p>
             </div>
 
         </div>

@@ -88,4 +88,13 @@
         <servlet-name>RemoveServlet</servlet-name>
         <url-pattern>/RemoveServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>VotaServlet</servlet-name>
+        <servlet-class>com.project.progetto.VotaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VotaServlet</servlet-name>
+        <url-pattern>/VotaServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

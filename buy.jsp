@@ -121,7 +121,45 @@
         <div class="row">
           <h1><i class="fa fa-inr" aria-hidden="true"></i><%=prezzo%> €</h1>
           <div class="row">
-            <h5>Rating: 4.5/5</h5>
+              <%
+                  try {
+                      Class.forName("com.mysql.jdbc.Driver");
+                  } catch (ClassNotFoundException e) {
+                      throw new RuntimeException(e);
+                  }
+                  
+                  int mediaVoto = 420;
+
+                  String url = "jdbc:mysql://localhost:3306/sneaka";
+                  String user = "sneaka";
+                  String password = "sneaka";
+
+                  String QUERY = "SELECT AVG(voto) FROM votazione WHERE nomescarpa = ?";
+
+
+                  try (Connection conn = DriverManager
+                          .getConnection(url, user, password);
+
+                       PreparedStatement prst = conn.prepareStatement(QUERY)) {
+                      prst.setString(1, modello);
+
+
+                      ResultSet res = prst.executeQuery();
+                      
+
+                      if (res.next()) {
+                          mediaVoto = (res.getInt(1));
+                      }
+                  } catch (SQLException e) {
+                      
+                  }
+                  
+              %>
+
+              <%
+                  if (mediaVoto == 0) { %> <h5>questa scarpa non ha ancora ricevuto alcun rating</h5> <% }
+                  else { %> <h5>Rating: <%=mediaVoto%></h5> <% }
+              %>
           </div>
           <div class="row mt-4">
             <h4>Size: &nbsp; &nbsp;</h4>
@@ -161,14 +199,14 @@
                 &nbsp;
                 &nbsp;<%
                     String destin = "login.jsp";
-                    if (valuemsg != null){ destin = "buy.jsp?modello=" + modello + "&genere=" + genere + "&prezzo=" + prezzo + "&immagine=" + immagine;}
+                    if (valuemsg != null){ destin = "AcquistoServlet?mm=" +modello+"&n=45&marra=dubbi";}
                     String destin2 = "login.jsp";
                     if (valuemsg != null){ destin2 = "CartServlet?modello=" + modello + "&prezzo=" + prezzo + "&immagine=" + immagine;}
                  %>
  
                 <br>
  
-                <button class="w-10 btn btn-lg btn-success" type="submit" formaction="AcquistoServlet?mm=<%=modello%>&n=45&marra=dubbi" formmethod="post">Buy</button>
+                <button class="w-10 btn btn-lg btn-success" type="submit" formaction=<%=destin%> formmethod="post">Buy</button>
                 <button class="w-10 btn btn-lg btn-primary" type="submit" formaction=<%=destin2%> formmethod="post">cart</button>
  
           </div>
@@ -188,16 +226,11 @@
                 <%@ page import="java.util.*" %>
                 <%
                 try {
-                //Class.forName("org.mariadb.jdbc.Driver");
                 Class.forName("com.mysql.jdbc.Driver");
                 } catch (ClassNotFoundException e) {
                 throw new RuntimeException(e);
                 }
-
-               // String url = "jdbc:mariadb://localhost:3306/sneaka";
-                String url = "jdbc:mysql://localhost:3306/sneaka";
-                String user = "sneaka";
-                String password = "sneaka";
+                
 
                 String SQL = "SELECT id,nome,genere,prezzo,prezzoOF,immagine,offerta,colore FROM scarpa where genere like ? and colore like ? and ((prezzo>=? and prezzo<=?) or (prezzoOF>=? and prezzoOF<=?))";
 
