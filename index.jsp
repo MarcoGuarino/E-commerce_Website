@@ -175,6 +175,15 @@
                     String genere3 = "";
                     String colore3 = "";
 
+                    String img4 = "";
+                    String mod4 = ""; //modello scarpa
+                    int prezzo4 = 0;
+                    String offerta4 = "";
+                    String genere4 = "";
+                    String colore4 = "";
+
+
+
                     String url = "jdbc:mysql://localhost:3306/sneaka";
                     String user = "sneaka";
                     String password = "sneaka";
@@ -203,33 +212,71 @@
                         img1 = String.valueOf(resultSet1.getString(7));
                     }
 
-                    int conta1 = 0;
-                    int conta2 = 0;
+                    int conta1 = 0; //per controllare che la query2 produca qualcosa
+                    int conta2 = 0; //per controllare che la query3 produca qualcosa
+                    int conta3 = 0; //per controllare che la query4 produca qualcosa
+                    boolean continua = true;
 
                     if (session.getAttribute("msg") != null){
 
-                    int idSU = (int) session.getAttribute("idU");
-                    String query2 = "SELECT * FROM `scarpa` where nome = (SELECT nome_scarpa FROM `acquisto` WHERE id_utente =" + String.valueOf(idSU) +" GROUP BY nome_scarpa ORDER BY COUNT(nome_scarpa) DESC LIMIT 1);"; //query per scarpa per l'utente
+                        int idSU = (int) session.getAttribute("idU");
+                        String query2 = "SELECT * FROM `scarpa` where nome = (SELECT nome_scarpa FROM `acquisto` WHERE id_utente =" + String.valueOf(idSU) +" GROUP BY nome_scarpa ORDER BY COUNT(nome_scarpa) DESC LIMIT 1);"; //query per scarpa per l'utente
 
-                    PreparedStatement statement2 = connection.prepareStatement(query2, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                    //statement2.setString(1, String.valueOf(idSU));
-                    ResultSet resultSet2 = statement2.executeQuery(query2);
+                        PreparedStatement statement2 = connection.prepareStatement(query2, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                        //statement2.setString(1, String.valueOf(idSU));
+                        ResultSet resultSet2 = statement2.executeQuery(query2);
 
-                    if (!resultSet2.next()){
-                       conta1 = 0;
-                    } 
-                    else {
-                       conta1 = 1;
-                       mod2 = String.valueOf(resultSet2.getString(2)); //modello è nome in mysql
-                       genere2 = String.valueOf(resultSet2.getString(4));
-                       colore2 = String.valueOf(resultSet2.getString(3));
-                       prezzo2 = Integer.parseInt(resultSet2.getString(5));
-                       offerta2 = String.valueOf(resultSet2.getString(6));
-                       if (offerta2.equals("si")){
-                           prezzo2 = Integer.parseInt(resultSet2.getString(8));
-                       }
-                       img2 = String.valueOf(resultSet2.getString(7));
-                    }
+                        if (!resultSet2.next()){
+                           conta1 = 0;
+                        } 
+                        else {
+                           conta1 = 1;
+                           mod2 = String.valueOf(resultSet2.getString(2)); //modello è nome in mysql
+                           genere2 = String.valueOf(resultSet2.getString(4));
+                           colore2 = String.valueOf(resultSet2.getString(3));
+                           prezzo2 = Integer.parseInt(resultSet2.getString(5));
+                           offerta2 = String.valueOf(resultSet2.getString(6));
+                           if (offerta2.equals("si")){
+                              prezzo2 = Integer.parseInt(resultSet2.getString(8));
+                            }
+                           img2 = String.valueOf(resultSet2.getString(7));
+                        }
+
+
+                        if (conta1 == 1){
+                           String query4 = "SELECT id,nome,genere,prezzo,prezzoOF,immagine,offerta,colore FROM scarpa where genere like " + "'" + String.valueOf(genere2) + "'" + " and colore like " + "'" + String.valueOf(colore2) + "'" + " and ((prezzo>="+String.valueOf(prezzo2-40)+ " and prezzo<=" + String.valueOf(prezzo2+40)+ ") or (prezzoOF>=" + String.valueOf(prezzo2-40) + " and prezzoOF<=" + String.valueOf(prezzo2+40) + "))";
+                           PreparedStatement statement4 = connection.prepareStatement(query4, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                           //statement4.setString(1, genere2.toString());
+                           //statement4.setString(2, colore2.toString());
+                           //statement4.setString(3, String.valueOf(prezzo2-40));
+                           //statement4.setString(4, String.valueOf(prezzo2+40));
+                           //statement4.setString(5, String.valueOf(prezzo2-40));
+                           //statement4.setString(6, String.valueOf(prezzo2+40));
+                           ResultSet resultSet4 = statement4.executeQuery(query4);
+                            if (!resultSet4.next()){
+                               conta3 = 0;
+                            }
+                            else{
+                               conta3 = 1;
+                               resultSet4.beforeFirst();
+                            }
+                            while (resultSet4.next() && continua == true){
+                               mod4 = String.valueOf(resultSet4.getString(2)); //modello è nome in mysql
+                               if (mod4.equals(mod2)) continue;
+                               else continua = false;
+                               genere4 = String.valueOf(resultSet4.getString(3));
+                               colore4 = String.valueOf(resultSet4.getString(8));
+                               prezzo4 = Integer.parseInt(resultSet4.getString(4));
+                               offerta4 = String.valueOf(resultSet4.getString(7));
+                               if (offerta4.equals("si")){
+                                  prezzo4 = Integer.parseInt(resultSet4.getString(5));
+                                }
+                               img4 = String.valueOf(resultSet4.getString(6));
+                            }
+
+                        }
+
+
                     }
 
 
@@ -264,19 +311,19 @@
                 <image href="<%=img1%>" height="200" width="200"></image>
                 <%}%>
                 <%
-                if (conta1 == 1){%>
-                <image href="<%=img2%>" height="200" width="200"></image>
+                if (conta1 == 1 && conta3 == 1){%>
+                <image href="<%=img4%>" height="200" width="200"></image>
                 <%}%>
                 </svg>
                 <h2>La scarpa che fa per te</h2>
                 <p>In base ai tuoi acquisti</p>
                 <%
                 if (conta1 == 0){%>
-                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod1%>&genere=<%=genere1%>&colore=<%=colore1%>&prezzo=<%=prezzo1%>&immagine=<%=img1%>">View details &raquo;</a></p>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod1%>&genere=<%=genere1%>&colore=<%=colore1%>&prezzo=<%=prezzo1%>&immagine=<%=img1%>">Guarda &raquo;</a></p>
                 <%}%>
                 <%
-                if (conta1 == 1){%>
-                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod2%>&genere=<%=genere2%>&colore=<%=colore2%>&prezzo=<%=prezzo2%>&immagine=<%=img2%>">View details &raquo;</a></p>
+                if (conta1 == 1 && conta3 == 1){%>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod4%>&genere=<%=genere4%>&colore=<%=colore4%>&prezzo=<%=prezzo4%>&immagine=<%=img4%>">Guarda &raquo;</a></p>
                 <%}%>
             </div>
             <%}%>
