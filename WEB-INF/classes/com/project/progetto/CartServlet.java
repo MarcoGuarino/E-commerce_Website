@@ -35,7 +35,7 @@ public class CartServlet extends HttpServlet {
         c = String.valueOf(count);
 
 
-        response.sendRedirect("carrello.jsp");
+        response.sendRedirect("carrelloOK.jsp");
 
     }
  

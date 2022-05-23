@@ -131,7 +131,7 @@ else if(fibra==null && c==null){
         }
      }//aquista tutto
        
-        response.sendRedirect("acquistate.jsp");
+        response.sendRedirect("acquistoOK.jsp");
     }
 }
   

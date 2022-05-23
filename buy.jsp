@@ -206,8 +206,8 @@
  
                 <br>
  
-                <button class="w-10 btn btn-lg btn-success" type="submit" formaction=<%=destin%> formmethod="post">Buy</button>
-                <button class="w-10 btn btn-lg btn-primary" type="submit" formaction=<%=destin2%> formmethod="post">cart</button>
+                <button class="w-10 btn btn-lg btn-success" type="submit" formaction=<%=destin%> formmethod="post">Acquista</button>
+                <button class="w-10 btn btn-lg btn-primary" type="submit" formaction=<%=destin2%> formmethod="post">Carrello</button>
  
           </div>
             </form>

@@ -145,6 +145,113 @@
 
 
     <div class="container marketing">
+                <%@ page import="java.io.IOException"%>
+                <%@ page import="java.sql.*" %> 
+                <%@ page import="java.util.*" %>
+                <%
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    } catch (ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                    }
+                    String img1 = "";
+                    String mod1 = ""; //modello scarpa
+                    int prezzo1 = 0;
+                    String offerta1 = "";
+                    String genere1 = "";
+                    String colore1 = "";
+
+                    String img2 = "";
+                    String mod2 = ""; //modello scarpa
+                    int prezzo2 = 0;
+                    String offerta2 = "";
+                    String genere2 = "";
+                    String colore2 = "";
+
+                    String img3 = "";
+                    String mod3 = ""; //modello scarpa
+                    int prezzo3 = 0;
+                    String offerta3 = "";
+                    String genere3 = "";
+                    String colore3 = "";
+
+                    String url = "jdbc:mysql://localhost:3306/sneaka";
+                    String user = "sneaka";
+                    String password = "sneaka";
+
+                    Connection connection = DriverManager.getConnection(url,user,password);
+
+                    String query1 = "SELECT * FROM scarpa ORDER BY rand() LIMIT 1;"; //query per scarpa random
+                    String query3 = "SELECT * FROM `scarpa` where nome = (SELECT nome_scarpa FROM `acquisto` GROUP BY nome_scarpa ORDER BY COUNT(nome_scarpa) DESC LIMIT 1)"; //query per la scarpa piu' venduta di sempre
+
+                    PreparedStatement statement1 = connection.prepareStatement(query1, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                    PreparedStatement statement3 = connection.prepareStatement(query3, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+                    ResultSet resultSet1 = statement1.executeQuery(query1);
+                    ResultSet resultSet3 = statement3.executeQuery(query3);
+                    
+
+                    while(resultSet1.next()){ //risultati della query
+                        mod1 = String.valueOf(resultSet1.getString(2)); //modello è nome in mysql
+                        genere1 = String.valueOf(resultSet1.getString(4));
+                        colore1 = String.valueOf(resultSet1.getString(3));
+                        prezzo1 = Integer.parseInt(resultSet1.getString(5));
+                        offerta1 = String.valueOf(resultSet1.getString(6));
+                        if (offerta1.equals("si")){
+                            prezzo1 = Integer.parseInt(resultSet1.getString(8));
+                        }
+                        img1 = String.valueOf(resultSet1.getString(7));
+                    }
+
+                    int conta1 = 0;
+                    int conta2 = 0;
+
+                    if (session.getAttribute("msg") != null){
+
+                    int idSU = (int) session.getAttribute("idU");
+                    String query2 = "SELECT * FROM `scarpa` where nome = (SELECT nome_scarpa FROM `acquisto` WHERE id_utente =" + String.valueOf(idSU) +" GROUP BY nome_scarpa ORDER BY COUNT(nome_scarpa) DESC LIMIT 1);"; //query per scarpa per l'utente
+
+                    PreparedStatement statement2 = connection.prepareStatement(query2, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                    //statement2.setString(1, String.valueOf(idSU));
+                    ResultSet resultSet2 = statement2.executeQuery(query2);
+
+                    if (!resultSet2.next()){
+                       conta1 = 0;
+                    } 
+                    else {
+                       conta1 = 1;
+                       mod2 = String.valueOf(resultSet2.getString(2)); //modello è nome in mysql
+                       genere2 = String.valueOf(resultSet2.getString(4));
+                       colore2 = String.valueOf(resultSet2.getString(3));
+                       prezzo2 = Integer.parseInt(resultSet2.getString(5));
+                       offerta2 = String.valueOf(resultSet2.getString(6));
+                       if (offerta2.equals("si")){
+                           prezzo2 = Integer.parseInt(resultSet2.getString(8));
+                       }
+                       img2 = String.valueOf(resultSet2.getString(7));
+                    }
+                    }
+
+
+
+                    if (!resultSet3.next()){
+                       conta2 = 0;
+                    } 
+                    else {
+                       conta2 = 1;
+                       mod3 = String.valueOf(resultSet3.getString(2)); //modello è nome in mysql
+                       genere3 = String.valueOf(resultSet3.getString(4));
+                       colore3 = String.valueOf(resultSet3.getString(3));
+                       prezzo3 = Integer.parseInt(resultSet3.getString(5));
+                       offerta3 = String.valueOf(resultSet3.getString(6));
+                       if (offerta3.equals("si")){
+                           prezzo3 = Integer.parseInt(resultSet3.getString(8));
+                       }
+                       img3 = String.valueOf(resultSet3.getString(7));
+                    }
+
+
+                %>
 
         <div class="row">
             <%
@@ -152,11 +259,25 @@
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
                      xmlns="http://www.w3.org/2000/svg">
-                    <image href="img/b.webp" height="200" width="200"></image>
+                <%
+                if (conta1 == 0){%>
+                <image href="<%=img1%>" height="200" width="200"></image>
+                <%}%>
+                <%
+                if (conta1 == 1){%>
+                <image href="<%=img2%>" height="200" width="200"></image>
+                <%}%>
                 </svg>
                 <h2>La scarpa che fa per te</h2>
                 <p>In base ai tuoi acquisti</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <%
+                if (conta1 == 0){%>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod1%>&genere=<%=genere1%>&colore=<%=colore1%>&prezzo=<%=prezzo1%>&immagine=<%=img1%>">View details &raquo;</a></p>
+                <%}%>
+                <%
+                if (conta1 == 1){%>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod2%>&genere=<%=genere2%>&colore=<%=colore2%>&prezzo=<%=prezzo2%>&immagine=<%=img2%>">View details &raquo;</a></p>
+                <%}%>
             </div>
             <%}%>
 
@@ -167,6 +288,7 @@
                      xmlns="http://www.w3.org/2000/svg">
                     <image href="img/dito.jpg" height="200" width="200"></image>
                 </svg>
+                <p>&nbsp;</p> 
                 <p>esegui il login &nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="login.jsp">Premi&raquo;</a></p>
                 <p>esegui la registrazione &nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="signup.jsp">Premi&raquo;</a></p>
             </div>
@@ -175,11 +297,25 @@
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
                      xmlns="http://www.w3.org/2000/svg">
-                    <image href="img/b.webp" height="200" width="200"></image>
+                <%
+                if (conta2 == 0){%>
+                <image href="<%=img1%>" height="200" width="200"></image>
+                <%}%>
+                <%
+                if (conta2 == 1){%>
+                <image href="<%=img3%>" height="200" width="200"></image>
+                <%}%>
                 </svg>
                 <h2>La scarpa piu acquistata</h2>
                 <p>La pi&ugrave; acquistata nel nostro e-commerce</p>
-                <p><a class="btn btn-secondary" href="#">Dettagli &raquo;</a></p>
+                <%
+                if (conta2 == 0){%>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod1%>&genere=<%=genere1%>&colore=<%=colore1%>&prezzo=<%=prezzo1%>&immagine=<%=img1%>">Guarda &raquo;</a></p>
+                <%}%>
+                <%
+                if (conta2 == 1){%>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod3%>&genere=<%=genere3%>&colore=<%=colore3%>&prezzo=<%=prezzo3%>&immagine=<%=img3%>">Guarda &raquo;</a></p>
+                <%}%>
             </div>
             <div class="col-lg-4">
                 <svg class="bd-placeholder-img rounded-circle" width="200" height="200"
@@ -189,7 +325,7 @@
 
                 <h2>Sorprendimi</h2>
                 <p>&nbsp;</p> 
-                <p><a class="btn btn-secondary" href="#">Scopri&raquo;</a></p>
+                <p><a class="btn btn-secondary" href="buy.jsp?modello=<%=mod1%>&genere=<%=genere1%>&colore=<%=colore1%>&prezzo=<%=prezzo1%>&immagine=<%=img1%>">Scopri&raquo;</a></p>
             </div>
 
         </div>
