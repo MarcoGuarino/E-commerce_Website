@@ -65,67 +65,99 @@
 </header>
 
 <main>
-    <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#0"/></svg>
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <img src="img/a.webp" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#0"/></svg>
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <img src="img/a.webp" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#0"/></svg>
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <img src="img/a.webp" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-
    
+ <div class="album py-4 bg-light">
+    <div class="container">
 
-    </div>
+         <div class="row row-cols-1 row-cols-md-3 " style="margin-top: 40px;">
 
+          <div class="col">
+               <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                        
+                         <a><image href="img\shoes.png" height="200" width="200"></image></a>
+                        
+                        
+                </svg>
+            <div class="card-body">
+                <form>
+                
 
+                 <p class="card-price"><button type="submit" formaction="adminAdd.jsp"  formmethod="post" class="btn btn-danger">Aggiungi Scarpa</button></p>
+                 </form>
+               
+            </div>
+                 </div>
+                        </div>
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                        
+                         <a><image href="img\cestino.png" height="200" width="200"></image></a>
+                        
+                        
+                </svg>
+            <div class="card-body">
+                <form>
+                
 
+                 <p class="card-price"><button type="submit" formaction="adminRemove.jsp"  formmethod="post" class="btn btn-danger">Rimuovi Scarpa</button></p>
+                 </form>
+               
+            </div>
+                 </div>
+                        </div>
+                        
+          <div class="col">
+               <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                        
+                         <a><image href="img\shoes.png" height="200" width="200"></image></a>
+                        
+                        
+                </svg>
+            <div class="card-body">
+                <form>
+                
 
-    <footer class="container">
-        <p></p>
-    </footer>
+                 <p class="card-price"><button type="submit" formaction="ricercaAdmin.jsp"  formmethod="post" class="btn btn-danger">Aggiungi offerta</button></p>
+                 </form>
+               
+            </div>
+                 </div>
+                        </div>
+                        
+          <div class="col">
+               <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                        
+                         <a><image href="img\shoes.png" height="200" width="200"></image></a>
+                        
+                        
+                </svg>
+            <div class="card-body">
+                <form>
+                
 
+                 <p class="card-price"><button type="submit" formaction="adminRimuoviOF.jsp"  formmethod="post" class="btn btn-danger">Rimuovi Offerta</button></p>
+                 </form>
+               
+            </div>
+                 </div>
+                        </div>
+            </div>
+          </div>
+        </div>
 
-
+        </div>
+      </div>
+</div>
+          
+          
 </main>
-
 <script src="bootstrap/js/bootstrap.bundle.js"></script>
 </body>
 </html>

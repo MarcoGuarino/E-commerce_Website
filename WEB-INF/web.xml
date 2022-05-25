@@ -97,4 +97,22 @@
         <servlet-name>VotaServlet</servlet-name>
         <url-pattern>/VotaServlet</url-pattern>
     </servlet-mapping>
+    
+     <servlet>
+        <servlet-name>OffertaServlet</servlet-name>
+        <servlet-class>com.project.progetto.OffertaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OffertaServlet</servlet-name>
+        <url-pattern>/OffertaServlet</url-pattern>
+    </servlet-mapping>
+
+     <servlet>
+        <servlet-name>OffertaRemoveServlet</servlet-name>
+        <servlet-class>com.project.progetto.OffertaRemoveServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OffertaRemoveServlet</servlet-name>
+        <url-pattern>/OffertaRemoveServlet</url-pattern>
+    </servlet-mapping>
 </web-app>

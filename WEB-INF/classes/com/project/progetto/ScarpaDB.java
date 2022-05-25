@@ -59,6 +59,83 @@ public class ScarpaDB {
         return result;
     }
 
+    public int inserisciOfferta(Scarpa scarpa) throws ClassNotFoundException
+    {
+        String SQL="update scarpa set offerta='si', prezzoOF=? where  nome=?;";
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+        //Class.forName("org.mariadb.jdbc.Driver");
+
+        //String url = "jdbc:mariadb://localhost:3306/sneaka";
+        String url = "jdbc:mysql://localhost:3306/sneaka";
+        String user = "sneaka";
+        String password = "sneaka";
+
+        try (Connection connection = DriverManager
+                .getConnection(url, user, password);
+
+
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
+
+                preparedStatement.setInt(1, scarpa.getPrezzoOF());
+            preparedStatement.setString(2, scarpa.getNome());
+          
+          
+            
+
+
+            System.out.println(preparedStatement);
+
+            result = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            printSQLException(e);
+        }
+        return result;
+
+
+    
+    }
+
+    public int rimuoviOfferta(Scarpa scarpa)  throws ClassNotFoundException
+    {
+        String SQL="update scarpa set offerta='no' where  id=?;";
+        int result = 0;
+
+        Class.forName("com.mysql.jdbc.Driver");
+        //Class.forName("org.mariadb.jdbc.Driver");
+
+        //String url = "jdbc:mariadb://localhost:3306/sneaka";
+        String url = "jdbc:mysql://localhost:3306/sneaka";
+        String user = "sneaka";
+        String password = "sneaka";
+
+        try (Connection connection = DriverManager
+                .getConnection(url, user, password);
+
+
+             PreparedStatement preparedStatement = connection.prepareStatement(SQL)) {
+
+                preparedStatement.setInt(1, scarpa.getPrezzo());    
+           
+          
+          
+            
+
+
+            System.out.println(preparedStatement);
+
+            result = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+
+            printSQLException(e);
+        }
+        return result;
+    }
+
     private void printSQLException(SQLException ex) {
         for (Throwable e: ex) {
             if (e instanceof SQLException) {
