@@ -101,7 +101,7 @@ public class ScarpaDB {
 
     public int rimuoviOfferta(Scarpa scarpa)  throws ClassNotFoundException
     {
-        String SQL="update scarpa set offerta='no' where  id=?;";
+        String SQL="update scarpa set offerta='no', prezzoOF=null where  id=?;";
         int result = 0;
 
         Class.forName("com.mysql.jdbc.Driver");

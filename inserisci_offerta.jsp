@@ -52,12 +52,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="adminAdd.jsp"><i class="bi bi-plus-lg fs-4 mb-3"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="adminRemove.jsp"><i class="bi bi-eraser fs-4 mb-3"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>

@@ -52,12 +52,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href=<%=dest%>><i class="bi bi-person-circle fs-4 mb-3"></i></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="adminAdd.jsp"><i class="bi bi-plus-lg fs-4 mb-3"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="adminRemove.jsp"><i class="bi bi-eraser fs-4 mb-3"></i></a>
-                    </li>
                 </ul>
             </div>
         </div>
@@ -65,11 +59,12 @@
 </header>
 
 <main>
-   
+
+<!--   
  <div class="album py-4 bg-light">
     <div class="container">
 
-         <div class="row row-cols-1 row-cols-md-3 " style="margin-top: 40px;">
+        <div class="row row-cols-1 row-cols-md-3 " style="margin-top: 40px;">
 
           <div class="col">
                <div class="card shadow-sm">
@@ -80,7 +75,7 @@
                         
                         
                 </svg>
-            <div class="card-body">
+          <div class="card-body">
                 <form>
                 
 
@@ -155,6 +150,73 @@
         </div>
       </div>
 </div>
+-->
+
+<div class="album py-4 bg-light">
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2" style="margin-top:50px;">
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                         <a><image href="img\addshoe.webp" height="200" width="200"></image></a>
+                </svg>
+            <div class="card-body">
+                <form>
+                  <p class="card-price"><button type="submit" formaction="adminAdd.jsp"  formmethod="post" class="btn btn-danger">Aggiungi Scarpa</button></p>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                         <a><image href="img\delete_scarpa.png" height="200" width="200"></image></a>
+                </svg>
+            <div class="card-body">
+                <form>
+                  <p class="card-price"><button type="submit" formaction="adminRemove.jsp"  formmethod="post" class="btn btn-danger">Rimuovi Scarpa</button></p>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                         <a><image href="img\sales2.png" height="200" width="200"></image></a>
+                </svg>
+            <div class="card-body">
+                <form>
+                  <p class="card-price"><button type="submit" formaction="ricercaAdmin.jsp"  formmethod="post" class="btn btn-danger">Aggiungi offerta</button></p>
+                </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="200" height="200"
+                         xmlns="http://www.w3.org/2000/svg">
+                         <a><image href="img\nosales3.png" height="200" width="200"></image></a>
+                </svg>
+            <div class="card-body">
+                <form>
+                  <p class="card-price"><button type="submit" formaction="adminRimuoviOF.jsp"  formmethod="post" class="btn btn-danger">Rimuovi Offerta</button></p>
+                </form>
+            </div>
+          </div>
+        </div>
+
+
+
+</div>
+  </div>
+    </div>
           
           
 </main>
