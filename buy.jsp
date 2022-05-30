@@ -157,7 +157,7 @@
               %>
 
               <%
-                  if (mediaVoto == 0) { %> <h5>questa scarpa non ha ancora ricevuto alcun rating</h5> <% }
+                  if (mediaVoto == 0) { %> <h5>Rating: <u>mai recensita</u></h5> <% }
                   else { %> <h5>Rating: <%=mediaVoto%></h5> <% }
               %>
           </div>

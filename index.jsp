@@ -102,7 +102,6 @@
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -110,7 +109,7 @@
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <img src="img/a.webp" class="img-fluid">
+                        <img src="img/snk111.jpeg" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -119,16 +118,7 @@
 
                 <div class="container">
                     <div class="carousel-caption">
-                        <img src="img/a.webp" class="img-fluid">
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#0"/></svg>
-
-                <div class="container">
-                    <div class="carousel-caption">
-                        <img src="img/a.webp" class="img-fluid">
+                        <img src="img/snk22.jpeg" class="img-fluid">
                     </div>
                 </div>
             </div>
