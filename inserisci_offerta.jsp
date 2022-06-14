@@ -131,7 +131,7 @@
             <form>
                  <div class="col-12">
                             <label class="form-label">Prezzo in offerta</label>
-                            <input type="text" class="form-control" name="prezzo" required>
+                            <input type="number" class="form-control" name="prezzo" min=1 max=<%=prezzo-1%> required>
                         </div>
                 &nbsp;
                 &nbsp;<%

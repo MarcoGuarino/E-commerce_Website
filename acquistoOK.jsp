@@ -104,7 +104,7 @@
         <div class="card w-20 h-40">
             <div class="card-body">
                 <h4 class="card-title">Acquisto effettuato</h4>
-                <a href="index.jsp" class="btn btn-danger">continua la visita</a>
+                <a href="index.jsp" class="btn btn-success">continua la visita</a>
             </div>
         </div>
     </div>
